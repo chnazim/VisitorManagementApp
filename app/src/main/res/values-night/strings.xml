@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="welcome_text">WELCOME....</string>
+    <string name="bennellin_text">BENNELLIN INFORMATICS</string>
+    <string name="heading_text">Login to your Account</string>
+</resources>
