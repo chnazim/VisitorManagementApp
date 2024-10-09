@@ -3,4 +3,5 @@
     <string name="welcome_text">WELCOME....</string>
     <string name="bennellin_text">BENNELLIN INFORMATICS</string>
     <string name="heading_text">Login to your Account</string>
+    <string name="tap_id_message">TAP THE EMIRATES ID FOR FETCH THE DETAILS</string>
 </resources>

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -99,10 +100,24 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_logout -> {
-                SharedPreferenceManager.saveLoggedIn("is_logged_in", false)
-                val intent = Intent(this, LoginActivity::class.java)
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(intent)
+                AlertDialog.Builder(this).apply {
+                    setTitle("Logout")
+                    setMessage("Are you sure you want to log out?")
+                    setPositiveButton("Yes") { dialog, which ->
+                        // User clicked Yes, proceed with logout
+                        SharedPreferenceManager.saveLoggedIn("is_logged_in", false)
+                        val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        startActivity(intent)
+                        finish()
+                    }
+                    setNegativeButton("No") { dialog, which ->
+                        // User clicked No, dismiss the dialog
+                        dialog.dismiss()
+                    }
+                    show()
+                }
                 true
             }
 

@@ -45,4 +45,6 @@ object SharedPreferenceManager {
     fun getUserName(key: String): String? {
         return preferences.getString(key, null)
     }
+
+
 }

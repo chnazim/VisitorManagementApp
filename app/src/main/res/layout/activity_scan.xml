@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/nfcLogo"
             android:layout_centerInParent="true"
-            android:text="Tap Your Emirates ID"
+            android:text="@string/tap_id_message"
             android:textSize="18sp" />
     </RelativeLayout>
 

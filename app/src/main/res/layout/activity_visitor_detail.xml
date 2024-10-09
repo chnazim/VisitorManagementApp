@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.VisitorDetailActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- User Photo -->
+        <ImageView
+            android:id="@+id/userPhoto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/baseline_image_24" /> <!-- Replace with a placeholder image -->
+
+        <!-- User Name -->
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userPhoto"
+            android:layout_margin="16dp"
+            android:text="Name: John Doe"
+            android:textSize="18sp" />
+
+
+        <!-- Emirates ID -->
+        <TextView
+            android:id="@+id/emiratesId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/userName"
+            android:layout_margin="16dp"
+            android:text="Emirates ID: 784-1234567-8"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/labelPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emiratesId"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Phone Number"
+            android:textSize="14sp" />
+
+        <!-- Phone Number EditText -->
+        <EditText
+            android:id="@+id/phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/labelPhoneNumber"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:padding="12dp"
+            android:text="0501234567" />
+
+
+        <TextView
+            android:id="@+id/labelEmailId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/phoneNumber"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Email ID"
+            android:textSize="14sp" />
+
+        <!-- Email EditText -->
+        <EditText
+            android:id="@+id/emailId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/labelEmailId"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/edit_text_background"
+            android:hint="Email ID"
+            android:inputType="textEmailAddress"
+            android:padding="12dp"
+            android:text="johndoe@example.com" />
+
+        <TextView
+            android:id="@+id/labelPurposeOfVisit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/emailId"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Purpose of Visit"
+            android:textSize="14sp" />
+
+        <!-- Purpose of Visit Spinner -->
+        <Spinner
+            android:id="@+id/purposeOfVisit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/labelPurposeOfVisit"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/purposeOfVisit"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="16dp"
+            android:text="Save" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

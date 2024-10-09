@@ -301,7 +301,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/settings_power/baseline_settings_power_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/image/baseline_image_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -311,8 +311,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="e51313" />
-                            <entry key="outputName" value="baseline_log_out_24" />
+                            <entry key="color" value="c7c7c7" />
+                            <entry key="outputName" value="baseline_image_24" />
                           </map>
                         </option>
                       </PersistentState>

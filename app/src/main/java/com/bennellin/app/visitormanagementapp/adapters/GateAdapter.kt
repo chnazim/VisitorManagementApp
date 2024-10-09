@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bennellin.app.visitormanagementapp.R
 import com.bennellin.app.visitormanagementapp.activity.ScanActivity
+import com.bennellin.app.visitormanagementapp.activity.ScanEmiratesIdActivity
 import com.bennellin.app.visitormanagementapp.models.GateModel
 
 class GateAdapter(private val gates: List<GateModel>, private val mContext: Context) :

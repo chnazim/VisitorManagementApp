@@ -45,6 +45,8 @@ class LoginActivity : AppCompatActivity() {
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
 
+//                loadMainActivity("token")
+
                 val authRequest = AuthRequest(
                     userName = email,
                     password = password,

@@ -17,8 +17,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bennellin.app.visitormanagementapp.R
-import com.bennellin.app.visitormanagementapp.databinding.ActivityMainBinding
 import com.bennellin.app.visitormanagementapp.databinding.ActivityScanBinding
+import com.bennellin.app.visitormanagementapp.general.InitializeToolkitTask
 import java.io.IOException
 
 class ScanActivity : AppCompatActivity() {
@@ -53,6 +53,8 @@ class ScanActivity : AppCompatActivity() {
             insets
         }
 
+        initialize()
+
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
         if (nfcAdapter == null) {
             Toast.makeText(this, "NFC is not available", Toast.LENGTH_SHORT).show()
@@ -64,6 +66,26 @@ class ScanActivity : AppCompatActivity() {
             Toast.makeText(this, "Please enable NFC in the settings", Toast.LENGTH_SHORT).show()
         }
     }
+
+    private fun initialize() {
+        val initializeToolkitTask: InitializeToolkitTask =
+            InitializeToolkitTask(mInitializationListener)
+        initializeToolkitTask.execute()
+    }
+
+    private val mInitializationListener: InitializeToolkitTask.InitializationListener =
+        object : InitializeToolkitTask.InitializationListener {
+            override fun onToolkitInitialized(isSuccessful: Boolean, statusMessage: String) {
+
+                if (isSuccessful) {
+//                    showMessage("$statusMessage\nPlease tap your NFC card to read public data.")
+
+                } else {
+//                    showMessage(statusMessage)
+                }
+            }
+        }
+
 
     override fun onResume() {
         super.onResume()
@@ -81,7 +103,20 @@ class ScanActivity : AppCompatActivity() {
     }
 
     override fun onNewIntent(intent: Intent?) {
-        val configString = readConfigFromAssets(this, "config_pg")
+//        val configString = readConfigFromAssets(this, "config_li")
+
+        val configString = buildConfigParams()
+//        val configFileNames = listOf(
+//            "config_ag",
+//            "config_li",
+//            "config_lv_qa",
+//            "config_pg",
+//            "config_tk_qa",
+//            "config_vg_qa"
+//        )
+
+//        val configString = readMultipleConfigsFromAssets(this, configFileNames)
+
         Log.d("TAG", "configString: $configString")
 
         super.onNewIntent(intent)
@@ -89,9 +124,12 @@ class ScanActivity : AppCompatActivity() {
             intent.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG)?.let { tag ->
                 // Initialize the toolkit
                 try {
-                    val toolkit = Toolkit(true, configString, this)
+                    val toolkit = Toolkit(true, configString)
                     toolkit.setNfcMode(tag)
                     toolkit.readerWithEmiratesID
+
+                    val visitorIntent = Intent(this, VisitorDetailActivity::class.java)
+                    startActivity(visitorIntent)
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Toast.makeText(
@@ -99,10 +137,11 @@ class ScanActivity : AppCompatActivity() {
                         "Error initializing Toolkit: ${e.message}",
                         Toast.LENGTH_SHORT
                     ).show()
+
+                    val visitorIntent = Intent(this, VisitorDetailActivity::class.java)
+                    startActivity(visitorIntent)
                 }
 
-                // Uncomment this to read Emirates ID
-                // readEmiratesId(tag)
             }
         }
     }
@@ -119,6 +158,49 @@ class ScanActivity : AppCompatActivity() {
             ex.printStackTrace()
             ""
         }
+    }
+
+    fun readMultipleConfigsFromAssets(context: Context, fileNames: List<String>): List<String> {
+        val configs = mutableListOf<String>()
+
+        for (fileName in fileNames) {
+            try {
+                context.assets.open(fileName).use { inputStream ->
+                    val size = inputStream.available()
+                    val buffer = ByteArray(size)
+                    inputStream.read(buffer)
+                    configs.add(String(buffer, Charsets.UTF_8))
+                }
+            } catch (ex: IOException) {
+                ex.printStackTrace() // Log the exception
+                configs.add("") // Add an empty string for failed files or handle it as needed
+            }
+        }
+
+        return configs
+    }
+
+
+    private fun buildConfigParams(): String {
+        val stringBuilder = StringBuilder()
+
+        val configFileNames = listOf(
+            "config_ag",
+            "config_li",
+            "config_lv_qa",
+            "config_pg",
+            "config_tk_qa",
+            "config_vg_qa"
+        )
+
+        // Append various strings
+        stringBuilder.appendLine("vg_url = http://vg-pre-prod.ica.gov.ae/ValidationGatewayService")
+        stringBuilder.appendLine("vg_connection_timeout = 60")
+        stringBuilder.appendLine("read_publicdata_offline = true")
+        stringBuilder.appendLine("agent_tls_enabled = false")
+        stringBuilder.appendLine("enable_digital_signature_service = false")
+
+        return stringBuilder.toString()
     }
 
     private fun readEmiratesId(tag: Tag) {

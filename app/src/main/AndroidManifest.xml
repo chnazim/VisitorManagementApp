@@ -18,7 +18,7 @@
         android:required="true" />
 
     <application
-        android:name=".general.VisitorManagementApp"
+        android:name=".general.MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -28,6 +28,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VisitorManagementApp"
         tools:targetApi="31">
+        <activity
+            android:name=".activity.ScanEmiratesIdActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.VisitorDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.GatesListActivity"
             android:exported="false" />
