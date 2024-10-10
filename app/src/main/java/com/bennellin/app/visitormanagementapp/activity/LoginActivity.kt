@@ -45,33 +45,33 @@ class LoginActivity : AppCompatActivity() {
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
 
-//                loadMainActivity("token")
+                loadMainActivity("token")
 
-                val authRequest = AuthRequest(
-                    userName = email,
-                    password = password,
-                    grandTpe = "password"
-                )
-                RetrofitInstance.api.authenticateUser(authRequest).enqueue(object :
-                    Callback<AuthResponse> {
-                    override fun onResponse(
-                        call: Call<AuthResponse>,
-                        response: Response<AuthResponse>
-                    ) {
-                        if (response.isSuccessful) {
-                            val authResponse = response.body()
-                            Log.d("AuthResponse", "Access Token: ${authResponse?.access_token}")
-                            // Handle the response as needed
-                            loadMainActivity(authResponse?.access_token)
-                        } else {
-                            Log.e("AuthResponse", "Error: ${response.code()}")
-                        }
-                    }
-
-                    override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
-                        Log.e("AuthResponse", "Failure: ${t.message}")
-                    }
-                })
+//                val authRequest = AuthRequest(
+//                    userName = email,
+//                    password = password,
+//                    grandTpe = "password"
+//                )
+//                RetrofitInstance.api.authenticateUser(authRequest).enqueue(object :
+//                    Callback<AuthResponse> {
+//                    override fun onResponse(
+//                        call: Call<AuthResponse>,
+//                        response: Response<AuthResponse>
+//                    ) {
+//                        if (response.isSuccessful) {
+//                            val authResponse = response.body()
+//                            Log.d("AuthResponse", "Access Token: ${authResponse?.access_token}")
+//                            // Handle the response as needed
+//                            loadMainActivity(authResponse?.access_token)
+//                        } else {
+//                            Log.e("AuthResponse", "Error: ${response.code()}")
+//                        }
+//                    }
+//
+//                    override fun onFailure(call: Call<AuthResponse>, t: Throwable) {
+//                        Log.e("AuthResponse", "Failure: ${t.message}")
+//                    }
+//                })
             } else {
                 Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
             }
