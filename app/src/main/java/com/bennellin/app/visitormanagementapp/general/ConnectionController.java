@@ -26,10 +26,13 @@ public class ConnectionController {
                 configBuilder.append("\n" + "config_directory =" + utils.path);
                 configBuilder.append("\n" + "log_directory =" + stringConfigPath);
                 configBuilder.append("\n" + "read_publicdata_offline = true");
+                configBuilder.append("\n" + "agent_tls_enabled = false");
+                configBuilder.append("\n" + "enable_digital_signature = false");
 //                configBuilder.append("\n" + "plugin_directory_path = " + readConfigFromAssets("config_li"));
 
                 // ICP PROD
-                configBuilder.append("\n" + "vg_url =" + "https://101.53.158.186/VGPreProd/ValidationGateway");
+//                configBuilder.append("\n" + "vg_url =" + "https://101.53.158.186/VGPreProd/ValidationGateway");
+                configBuilder.append("\n" + "vg_url =" + utils.VGL_URL);
 
                 toolkit = new Toolkit(true, configBuilder.toString(), MyApp.Companion.getAppContext());
                 CryptoUtils.setPublickey(toolkit.getDataProtectionKey().getPublicKey());
