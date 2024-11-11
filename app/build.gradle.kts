@@ -58,9 +58,16 @@ dependencies {
 //    kapt(libs.hilt.compiler)
     implementation(libs.androidx.cardview)
     implementation(libs.androidx.recyclerview)
-    implementation (libs.retrofit)
-    implementation (libs.converter.gson)
-    implementation (libs.logging.interceptor)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.logging.interceptor)
+
+    implementation("androidx.camera:camera-core:1.2.0")
+    implementation("androidx.camera:camera-camera2:1.2.0")
+    implementation("androidx.camera:camera-lifecycle:1.2.0")
+    implementation("androidx.camera:camera-view:1.2.0")
+
+    implementation("com.google.mlkit:text-recognition:16.0.0")
 
 }
 

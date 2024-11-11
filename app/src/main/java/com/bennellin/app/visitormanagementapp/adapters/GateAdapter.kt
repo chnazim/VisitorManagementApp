@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.camera.core.ExperimentalGetImage
 import androidx.recyclerview.widget.RecyclerView
 import com.bennellin.app.visitormanagementapp.R
 import com.bennellin.app.visitormanagementapp.activity.ScanActivity
-import com.bennellin.app.visitormanagementapp.activity.ScanEmiratesIdActivity
+import com.bennellin.app.visitormanagementapp.activity.ScanWithMRZ
 import com.bennellin.app.visitormanagementapp.models.GateModel
 
+@ExperimentalGetImage
 class GateAdapter(private val gates: List<GateModel>, private val mContext: Context) :
     RecyclerView.Adapter<GateAdapter.GateViewHolder>() {
 
@@ -29,7 +31,12 @@ class GateAdapter(private val gates: List<GateModel>, private val mContext: Cont
         val gate = gates[position]
         holder.tvGateName.text = "Gate Name: ${gate.GateName}"
         holder.itemView.setOnClickListener {
-            val intent = Intent(mContext, ScanActivity::class.java)
+//            val intent = Intent(mContext, ScanActivity::class.java)
+//            intent.putExtra("gate_id", gate.IdGate)
+//            intent.putExtra("gate_name", gate.GateName)
+//            mContext.startActivity(intent)
+
+            val intent = Intent(mContext, ScanWithMRZ::class.java)
             intent.putExtra("gate_id", gate.IdGate)
             intent.putExtra("gate_name", gate.GateName)
             mContext.startActivity(intent)
