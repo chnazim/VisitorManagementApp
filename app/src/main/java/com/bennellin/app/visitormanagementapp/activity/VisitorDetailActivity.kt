@@ -1,5 +1,6 @@
 package com.bennellin.app.visitormanagementapp.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
@@ -31,6 +32,10 @@ class VisitorDetailActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.purposeOfVisit.adapter = adapter
 
+        binding.saveButton.setOnClickListener {
+            val tokenIntent = Intent(this, TokenDisplayActivity::class.java)
+            startActivity(tokenIntent)
+        }
 
 
     }

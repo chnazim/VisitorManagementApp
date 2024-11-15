@@ -11,4 +11,5 @@
     <color name="primaryDark">#0B044E</color>
     <color name="secondary">#E91E63</color>
     <color name="secondaryDark">#E07297</color>
+    <color name="recyclerItemBack">#33AFAF</color>
 </resources>

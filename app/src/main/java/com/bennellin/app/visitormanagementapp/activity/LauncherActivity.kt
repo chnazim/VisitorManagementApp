@@ -14,6 +14,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.bennellin.app.visitormanagementapp.R
 import com.bennellin.app.visitormanagementapp.general.SharedPreferenceManager
+import com.bennellin.app.visitormanagementapp.newFlow.HomeActivity
+import com.bennellin.app.visitormanagementapp.newFlow.LoginActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -55,7 +57,7 @@ class LauncherActivity : AppCompatActivity() {
             lifecycleScope.launch {
                 delay(5000) // 5 seconds delay
                 if (isLoggedIn) {
-                    val intent = Intent(this@LauncherActivity, MainActivity::class.java)
+                    val intent = Intent(this@LauncherActivity, HomeActivity::class.java)
                     startActivity(intent)
                 } else {
                     val intent = Intent(this@LauncherActivity, LoginActivity::class.java)
