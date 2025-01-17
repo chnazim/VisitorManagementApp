@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2021 by Aptiway Information Technology Consultancy LLC.
+  ~ This file is part of the Plugin Development in compliance with Emirates ID Toolkit
+  ~
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ae.emiratesid.idcard.toolkit.plugin.nfcreader"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="26" />
+
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true" >
+    </application>
+
+</manifest>
