@@ -31,13 +31,13 @@
             android:src="@mipmap/ic_launcher"
             tools:ignore="ContentDescription" />
 
-        <TextView
-            android:id="@+id/bennellinText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/logo"
-            android:text="@string/bennellin_text"
-            android:textAlignment="center" />
+<!--        <TextView-->
+<!--            android:id="@+id/bennellinText"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/logo"-->
+<!--            android:text="@string/bennellin_text"-->
+<!--            android:textAlignment="center" />-->
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

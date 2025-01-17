@@ -1,0 +1,5 @@
+<resources>
+      <dimen name="fab_margin">200dp</dimen>
+    <dimen name="activity_vertical_margin">16</dimen>
+    <item name="activity_horizontal_margin" type="dimen" format="float">53.3</item>
+</resources>

@@ -1,12 +1,14 @@
 package com.bennellin.app.visitormanagementapp.general
 
+
+
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
 
-    private const val BASE_URL = "https://your.api.baseurl/" // Replace with your actual base URL
+    private const val BASE_URL =  "http://visitorms.zapto.org:5580" // Replace with your actual base URL
 
     private val client = OkHttpClient.Builder()
         .addInterceptor(ContentTypeInterceptor())

@@ -46,5 +46,13 @@ object SharedPreferenceManager {
         return preferences.getString(key, null)
     }
 
+    fun savePassword(key: String, value: String) {
+        preferences.edit().putString(key, value).apply()
+    }
+
+    fun getPassword(key: String): String? {
+        return preferences.getString(key, null)
+    }
+
 
 }

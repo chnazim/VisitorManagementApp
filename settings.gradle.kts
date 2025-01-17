@@ -21,4 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "VisitorManagementApp"
 include(":app")
+include(":app", ":EIDAToolkit")
+include(":app", ":xmlsec2-release")
+include(":app", ":nfcreader-plugin-release")
  

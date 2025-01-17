@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "com.bennellin.app.visitormanagementapp"
-        minSdk = 24
+        minSdk = 21
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -34,11 +34,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
 }
 
@@ -49,6 +49,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.navigation.fragment)
+    implementation(libs.androidx.navigation.ui)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -68,6 +70,14 @@ dependencies {
     implementation("androidx.camera:camera-view:1.2.0")
 
     implementation("com.google.mlkit:text-recognition:16.0.0")
+
+    implementation(project(":EIDAToolkit"))
+    implementation(project(":xmlsec2-release"))
+    implementation(project(":nfcreader-plugin-release"))
+    implementation("com.madgag.spongycastle:core:1.54.0.0")
+    implementation("com.madgag.spongycastle:prov:1.54.0.0")
+    implementation("com.madgag.spongycastle:pkix:1.54.0.0")
+    implementation("com.madgag.spongycastle:pg:1.54.0.0")
 
 }
 

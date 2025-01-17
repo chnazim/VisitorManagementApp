@@ -12,4 +12,16 @@
     <color name="secondary">#E91E63</color>
     <color name="secondaryDark">#E07297</color>
     <color name="recyclerItemBack">#33AFAF</color>
+
+
+    <color name="background_primary">#2E3344</color>
+    <color name="background_secondary">#3A3F54</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#888888</color>
+    <color name="button_active">#5A5F74</color>
+    <color name="button_pressed">#4C8BF5</color>
+    <color name="whitelist">#28A745</color>
+    <color name="blacklist">#DC3545</color>
+    <color name="colorReadPublicDataBG">#F5FCFE</color>
+    <color name="colorReadPublicDataAccent">#16647E</color>
 </resources>

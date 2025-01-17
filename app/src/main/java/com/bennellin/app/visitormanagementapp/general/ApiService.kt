@@ -13,8 +13,8 @@ import retrofit2.http.POST
 
 interface ApiService {
 
-    @Headers("Content-Type: application/json")
-    @POST("/Token")
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    @GET("/Token")
     fun authenticateUser(
         @Body authRequest: AuthRequest
     ): Call<AuthResponse>

@@ -1,6 +1,9 @@
 package com.bennellin.app.visitormanagementapp.general;
 
+import android.content.Context;
 import android.nfc.Tag;
+
+import com.bennellin.app.visitormanagementapp.Logger.Logger;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,23 +24,25 @@ public class ConnectionController {
     public static boolean initialize() throws ToolkitException {
         if (toolkit == null) {
             try {
-                String stringConfigPath = utils.VGL_URL;
+                String stringConfigPath = MyApp.Companion.getPath();
+                Context context = MyApp.Companion.getContext();
                 StringBuilder configBuilder = new StringBuilder();
-                configBuilder.append("\n" + "config_directory =" + utils.path);
+                configBuilder.append("\n" + "config_directory =" +  MyApp.Companion.getPath());
                 configBuilder.append("\n" + "log_directory =" + stringConfigPath);
                 configBuilder.append("\n" + "read_publicdata_offline = true");
-                configBuilder.append("\n" + "agent_tls_enabled = false");
-                configBuilder.append("\n" + "enable_digital_signature = false");
-//                configBuilder.append("\n" + "plugin_directory_path = " + readConfigFromAssets("config_li"));
 
                 // ICP PROD
-//                configBuilder.append("\n" + "vg_url =" + "https://101.53.158.186/VGPreProd/ValidationGateway");
-                configBuilder.append("\n" + "vg_url =" + utils.VGL_URL);
+                configBuilder.append("\n" + "vg_url =" + "https://101.53.158.186/VGPreProd/ValidationGateway");
+//                configBuilder.append("\n" + "vg_url =" + utils.VGL_URL);
 
-                toolkit = new Toolkit(true, configBuilder.toString(), MyApp.Companion.getAppContext());
+                String pluginDirectorPath = context.getApplicationInfo().nativeLibraryDir + "/";
+                configBuilder.append("\n" + "plugin_directory_path =" + pluginDirectorPath);
+                toolkit = new Toolkit(true, configBuilder.toString(), context);
                 CryptoUtils.setPublickey(toolkit.getDataProtectionKey().getPublicKey());
+                Logger.d("Toolkit version is " + toolkit.getToolkitVerison());
                 return true;
             } catch (ToolkitException e) {
+                Logger.e("Exception occurred in initializing  " + e.getLocalizedMessage());
                 throw e;
             }//catch()..
         }
@@ -47,7 +52,7 @@ public class ConnectionController {
     public static String readConfigFromAssets(String fileName) {
         String config = "";
         try {
-            InputStream inputStream = MyApp.Companion.getAppContext().getAssets().open(fileName);
+            InputStream inputStream = MyApp.Companion.getContext().getAssets().open(fileName);
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);

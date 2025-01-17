@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.camera.core.ExperimentalGetImage
 import androidx.recyclerview.widget.RecyclerView
 import com.bennellin.app.visitormanagementapp.R
-import com.bennellin.app.visitormanagementapp.activity.ScanActivity
 import com.bennellin.app.visitormanagementapp.activity.ScanWithMRZ
 import com.bennellin.app.visitormanagementapp.models.GateModel
 

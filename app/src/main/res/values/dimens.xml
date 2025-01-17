@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="photo_dimen">125</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16</dimen>
+    <item name="activity_horizontal_margin" type="dimen" format="float">53.3</item>
+</resources>

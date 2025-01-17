@@ -301,7 +301,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/sensor_door/baseline_sensor_door_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/on_device_training/baseline_on_device_training_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -312,7 +312,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="fdf9f9" />
-                            <entry key="outputName" value="baseline_sensor_door_24" />
+                            <entry key="outputName" value="ic_tool_kit_init" />
                           </map>
                         </option>
                       </PersistentState>
