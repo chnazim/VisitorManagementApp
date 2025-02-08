@@ -4,131 +4,302 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Main content -->
+    <!-- Main Content -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <!-- Sidebar menu -->
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Toolbar with Hamburger Button -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            android:layout_weight="10"
+            android:layout_height="?attr/actionBarSize"
             android:background="@color/background_secondary"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="8dp">
 
-            <!-- Home Button-->
-            <LinearLayout
-                android:id="@+id/option_home"
-                android:layout_width="match_parent"
+            <!-- Hamburger Button -->
+            <ImageView
+                android:id="@+id/menu_button"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:contentDescription="Menu"
+                android:padding="8dp"
+                android:src="@drawable/baseline_menu_24" />
+
+            <TextView
+                android:id="@+id/page_title"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="12dp">
+                android:layout_gravity="start"
+                android:layout_marginStart="8dp"
+                android:text="Dashboard"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="Home Icon"
-                    android:src="@drawable/baseline_image_24" />
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="16dp"
+                android:contentDescription="Profile"
+                android:padding="4dp"
+                android:src="@drawable/ic_user" />
 
-            <!-- Dashboard Option -->
-            <LinearLayout
-                android:id="@+id/option_dashboard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="12dp">
+            <ImageView
+                android:id="@+id/actionButton"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Action Button"
+                android:padding="4dp"
+                android:src="@drawable/ic_scan_id" />
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="Dashboard Icon"
-                    android:src="@drawable/ic_dashboard" />
-            </LinearLayout>
+            <ImageView
+                android:id="@+id/initializeToolKit"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="Tool kit init"
+                android:padding="4dp"
+                android:src="@drawable/ic_tool_kit_init"
+                android:visibility="gone" />
+        </androidx.appcompat.widget.Toolbar>
 
-            <!-- Reports Option -->
-            <LinearLayout
-                android:id="@+id/option_reports"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="12dp">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="Reports Icon"
-                    android:src="@drawable/ic_reports" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
+        <!-- Fragment container -->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="match_parent" />
+    </LinearLayout>
 
-            <!-- Top bar (Toolbar) -->
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/background_secondary"
-                android:padding="8dp">
+    <!-- Sidebar menu (Navigation Drawer) -->
+    <LinearLayout
+        android:id="@+id/sideDrawer"
+        android:layout_width="250dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/background_secondary"
+        android:clickable="true"
+        android:descendantFocusability="blocksDescendants"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-                <TextView
-                    android:id="@+id/page_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="8dp"
-                    android:text="Dashboard"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp" />
+        <!-- Home Button-->
+        <LinearLayout
+            android:id="@+id/option_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:visibility="invisible">
 
-                <ImageView
-                    android:id="@+id/profile_image"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="16dp"
-                    android:contentDescription="Profile"
-                    android:padding="4dp"
-                    android:src="@drawable/ic_user" />
-
-                <ImageView
-                    android:id="@+id/actionButton"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="8dp"
-                    android:contentDescription="Action Button"
-                    android:padding="4dp"
-                    android:src="@drawable/ic_scan_id" />
-
-                <ImageView
-                    android:id="@+id/initializeToolKit"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:layout_gravity="end"
-                    android:layout_marginEnd="8dp"
-                    android:contentDescription="Tool kit init"
-                    android:padding="4dp"
-                    android:src="@drawable/ic_tool_kit_init" />
-            </androidx.appcompat.widget.Toolbar>
-
-            <!-- Fragment container -->
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragment_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="Home Icon"
+                android:src="@drawable/baseline_image_24" />
         </LinearLayout>
 
+        <!-- Dashboard Option -->
+        <LinearLayout
+            android:id="@+id/option_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="Dashboard Icon"
+                android:src="@drawable/ic_dashboard" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:text="Dashboard"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Reports Option -->
+        <LinearLayout
+            android:id="@+id/option_reports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:contentDescription="Reports Icon"
+                android:src="@drawable/ic_reports" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:gravity="center"
+                android:text="Reports"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+        </LinearLayout>
     </LinearLayout>
+
+
 </androidx.drawerlayout.widget.DrawerLayout>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    android:id="@+id/drawer_layout"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="match_parent">-->
+
+    <!--    &lt;!&ndash; Main content &ndash;&gt;-->
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal">-->
+    <!--        &lt;!&ndash; Sidebar menu &ndash;&gt;-->
+    <!--        <LinearLayout-->
+    <!--            android:visibility="gone"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_gravity="start"-->
+    <!--            android:layout_weight="10"-->
+    <!--            android:background="@color/background_secondary"-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:padding="16dp">-->
+
+    <!--            &lt;!&ndash; Home Button&ndash;&gt;-->
+    <!--            <LinearLayout-->
+    <!--                android:id="@+id/option_home"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:gravity="center_vertical"-->
+    <!--                android:orientation="horizontal"-->
+    <!--                android:padding="12dp">-->
+
+    <!--                <ImageView-->
+    <!--                    android:layout_width="24dp"-->
+    <!--                    android:layout_height="24dp"-->
+    <!--                    android:contentDescription="Home Icon"-->
+    <!--                    android:src="@drawable/baseline_image_24" />-->
+    <!--            </LinearLayout>-->
+
+    <!--            &lt;!&ndash; Dashboard Option &ndash;&gt;-->
+    <!--            <LinearLayout-->
+    <!--                android:id="@+id/option_dashboard"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:gravity="center_vertical"-->
+    <!--                android:orientation="horizontal"-->
+    <!--                android:padding="12dp">-->
+
+    <!--                <ImageView-->
+    <!--                    android:layout_width="24dp"-->
+    <!--                    android:layout_height="24dp"-->
+    <!--                    android:contentDescription="Dashboard Icon"-->
+    <!--                    android:src="@drawable/ic_dashboard" />-->
+    <!--            </LinearLayout>-->
+
+    <!--            &lt;!&ndash; Reports Option &ndash;&gt;-->
+    <!--            <LinearLayout-->
+    <!--                android:id="@+id/option_reports"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:gravity="center_vertical"-->
+    <!--                android:orientation="horizontal"-->
+    <!--                android:padding="12dp">-->
+
+    <!--                <ImageView-->
+    <!--                    android:layout_width="24dp"-->
+    <!--                    android:layout_height="24dp"-->
+    <!--                    android:contentDescription="Reports Icon"-->
+    <!--                    android:src="@drawable/ic_reports" />-->
+    <!--            </LinearLayout>-->
+    <!--        </LinearLayout>-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:orientation="vertical">-->
+
+    <!--            &lt;!&ndash; Top bar (Toolbar) &ndash;&gt;-->
+    <!--            <androidx.appcompat.widget.Toolbar-->
+    <!--                android:id="@+id/toolbar"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:background="@color/background_secondary"-->
+    <!--                android:padding="8dp">-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/page_title"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_gravity="start"-->
+    <!--                    android:layout_marginStart="8dp"-->
+    <!--                    android:text="Dashboard"-->
+    <!--                    android:textColor="@android:color/white"-->
+    <!--                    android:textSize="18sp" />-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/profile_image"-->
+    <!--                    android:layout_width="36dp"-->
+    <!--                    android:layout_height="36dp"-->
+    <!--                    android:layout_gravity="end"-->
+    <!--                    android:layout_marginEnd="16dp"-->
+    <!--                    android:contentDescription="Profile"-->
+    <!--                    android:padding="4dp"-->
+    <!--                    android:src="@drawable/ic_user" />-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/actionButton"-->
+    <!--                    android:layout_width="36dp"-->
+    <!--                    android:layout_height="36dp"-->
+    <!--                    android:layout_gravity="end"-->
+    <!--                    android:layout_marginEnd="8dp"-->
+    <!--                    android:contentDescription="Action Button"-->
+    <!--                    android:padding="4dp"-->
+    <!--                    android:src="@drawable/ic_scan_id" />-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/initializeToolKit"-->
+    <!--                    android:layout_width="36dp"-->
+    <!--                    android:layout_height="36dp"-->
+    <!--                    android:layout_gravity="end"-->
+    <!--                    android:layout_marginEnd="8dp"-->
+    <!--                    android:contentDescription="Tool kit init"-->
+    <!--                    android:padding="4dp"-->
+    <!--                    android:src="@drawable/ic_tool_kit_init"-->
+    <!--                    android:visibility="gone" />-->
+    <!--            </androidx.appcompat.widget.Toolbar>-->
+
+    <!--            &lt;!&ndash; Fragment container &ndash;&gt;-->
+    <!--            <androidx.fragment.app.FragmentContainerView-->
+    <!--                android:id="@+id/fragment_container"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent" />-->
+    <!--        </LinearLayout>-->
+
+    <!--    </LinearLayout>-->
+    <!--</androidx.drawerlayout.widget.DrawerLayout>-->

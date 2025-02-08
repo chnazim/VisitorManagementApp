@@ -1,17 +1,17 @@
 package com.bennellin.app.visitormanagementapp.tab.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.viewmodel.CreationExtras;
 
 import android.os.Environment;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +23,14 @@ import com.bennellin.app.visitormanagementapp.Logger.Logger;
 import com.bennellin.app.visitormanagementapp.R;
 import com.bennellin.app.visitormanagementapp.general.Constants;
 import com.bennellin.app.visitormanagementapp.general.MyApp;
+import com.bennellin.app.visitormanagementapp.tab.activity.EIDScanActivity;
 import com.bennellin.app.visitormanagementapp.tab.tasks.CardReaderConnectionTask;
 import com.bennellin.app.visitormanagementapp.tab.tasks.ReaderCardDataAsync;
 import com.bennellin.app.visitormanagementapp.tab.tasks.ReaderCardDataListener;
 import com.bennellin.app.visitormanagementapp.tab.widget.LogTextView;
 import com.bennellin.app.visitormanagementapp.utils.Bitmaps;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -56,7 +59,10 @@ public class PublicDataReadingFragment extends BaseFragment implements View.OnCl
     private Tag tag;
 
 
-
+    //Using a formatted Custom  TextView  to show the result and logs;
+    private LogTextView txtStatus;
+    private Button btnResfersh;
+    private ImageView imgPhtoto;
 
 
     public PublicDataReadingFragment() {
@@ -106,11 +112,6 @@ public class PublicDataReadingFragment extends BaseFragment implements View.OnCl
         super.onCreate(savedInstanceState);
     }
 
-    //Using a formatted Custom  TextView  to show the result and logs;
-    private LogTextView txtStatus;
-    private Button btnResfersh;
-    private ImageView imgPhtoto;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -123,6 +124,7 @@ public class PublicDataReadingFragment extends BaseFragment implements View.OnCl
         btnResfersh = (Button) view.findViewById(R.id.btn_refresh);
         btnResfersh.setVisibility(!(isNFCMode) ? View.VISIBLE : View.INVISIBLE);
         btnResfersh.setOnClickListener(this);
+
         return view;
     }
 
@@ -176,6 +178,17 @@ public class PublicDataReadingFragment extends BaseFragment implements View.OnCl
                 publicDataString.append("\n\nCard Number ="
                         + cardPublicData.getCardNumber());
                 publicDataString.append("\n\nID Number =" + cardPublicData.getIdNumber());
+
+//                Gson gson = new GsonBuilder()
+//                        .excludeFieldsWithoutExposeAnnotation()
+//                        .create();
+//                String cardDataJson = gson.toJson(cardPublicData);
+
+
+                Intent intent = new Intent(requireContext(), EIDScanActivity.class);
+                intent.putExtra("eid_data", cardPublicData.toXmlString());
+                startActivity(intent);
+
                 try {
                     printHomeAddressData(cardPublicData.getHomeAddress());
                     printModifiableData(cardPublicData.getModifiablePublicData());
@@ -231,7 +244,7 @@ public class PublicDataReadingFragment extends BaseFragment implements View.OnCl
             if (!MyApp.Companion.isReading()) {
                 txtStatus.setText("");
                 //set the reading flag..
-               MyApp.Companion.setReading(true);
+                MyApp.Companion.setReading(true);
 
                 //show the dialog to provide user interaction...
                 showProgressDialog("Reading");
@@ -507,12 +520,11 @@ public class PublicDataReadingFragment extends BaseFragment implements View.OnCl
     }
 
 
-    private byte[] readDataFromFile(String fileName)
-    {
+    private byte[] readDataFromFile(String fileName) {
         String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/EIDAToolkit/";
 
-        Logger.d("File Path is ::"+path);
-        File file = new File(path+fileName);
+        Logger.d("File Path is ::" + path);
+        File file = new File(path + fileName);
         int size = (int) file.length();
         byte[] bytesDataFromFile = new byte[size];
         try {
@@ -525,18 +537,17 @@ public class PublicDataReadingFragment extends BaseFragment implements View.OnCl
             return null;
         } catch (IOException e) {
             e.printStackTrace();
-            return  null;
+            return null;
         }
     }
 
 
-    private String readXMLDataFromFile(String fileName)
-    {
+    private String readXMLDataFromFile(String fileName) {
         String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/EIDAToolkit/";
 
-        Logger.d("File Path is ::"+path);
+        Logger.d("File Path is ::" + path);
 
-        File file = new File(path+fileName);
+        File file = new File(path + fileName);
         StringBuilder text = new StringBuilder();
 
         try {
@@ -549,8 +560,7 @@ public class PublicDataReadingFragment extends BaseFragment implements View.OnCl
             }
             br.close();
 
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             //You'll need to add proper error handling here
         }
         return text.toString();

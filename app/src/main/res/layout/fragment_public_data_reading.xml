@@ -31,7 +31,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="150dp"
-        android:layout_height="@dimen/photo_dimen"
+        android:layout_height="125dp"
         android:layout_gravity="center"
         android:contentDescription="Photo Read from card."
         android:src="@drawable/ic_action_name" />

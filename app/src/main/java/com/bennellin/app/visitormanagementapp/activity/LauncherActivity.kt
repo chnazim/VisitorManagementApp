@@ -77,10 +77,10 @@ class LauncherActivity : AppCompatActivity() {
                 lifecycleScope.launch {
                     delay(5000) // 5 seconds delay
                     if (isLoggedIn) {
-                        val intent = Intent(this@LauncherActivity, HomeActivity::class.java)
+                        val intent = Intent(this@LauncherActivity, HomeActivityTab::class.java)
                         startActivity(intent)
                     } else {
-                        val intent = Intent(this@LauncherActivity, LoginActivity::class.java)
+                        val intent = Intent(this@LauncherActivity, com.bennellin.app.visitormanagementapp.tab.activity.LoginActivity::class.java)
                         startActivity(intent)
                     }
                     finish()

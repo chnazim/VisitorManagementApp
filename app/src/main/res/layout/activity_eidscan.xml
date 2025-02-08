@@ -17,202 +17,732 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <!-- Title -->
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Scan Emirates ID"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:layout_marginBottom="16dp" />
+            <!-- Title -->
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Scan Emirates ID"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
 
-        <!-- Top Two Dropdowns (Visitor Type, Visit Purpose) -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Visitor Type"
-                    android:textColor="#CCCCCC"
-                    android:layout_marginBottom="4dp" />
-
-                <Spinner
-                    android:id="@+id/spinnerVisitorType"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#FFFFFF" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="16dp"
-                android:layout_height="match_parent" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Visit Purpose"
-                    android:textColor="#CCCCCC"
-                    android:layout_marginBottom="4dp" />
-
-                <Spinner
-                    android:id="@+id/spinnerVisitPurpose"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#FFFFFF" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- Name Fields -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
-
-            <EditText
-                android:id="@+id/editTextFullNameEnglish"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Full Name English"
-                android:backgroundTint="#FFFFFF"
-                android:textColorHint="#CCCCCC"
-                android:textColor="#FFFFFF" />
-
-            <View
-                android:layout_width="16dp"
-                android:layout_height="match_parent" />
-
-            <EditText
-                android:id="@+id/editTextFullNameArabic"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Full Name Arabic"
-                android:backgroundTint="#FFFFFF"
-                android:textColorHint="#CCCCCC"
-                android:textColor="#FFFFFF" />
-        </LinearLayout>
-
-        <!-- ID and Card Details -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
-
-            <EditText
-                android:id="@+id/editTextIdNumber"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="ID Number"
-                android:backgroundTint="#FFFFFF"
-                android:textColorHint="#CCCCCC"
-                android:textColor="#FFFFFF" />
-
-            <View
-                android:layout_width="16dp"
-                android:layout_height="match_parent" />
-
-            <EditText
-                android:id="@+id/editTextCardNumber"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Card Number"
-                android:backgroundTint="#FFFFFF"
-                android:textColorHint="#CCCCCC"
-                android:textColor="#FFFFFF" />
-        </LinearLayout>
-
-        <!-- Mobile Number -->
-        <EditText
-            android:id="@+id/editTextMobileNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Mobile Number"
-            android:backgroundTint="#FFFFFF"
-            android:textColorHint="#CCCCCC"
-            android:textColor="#FFFFFF"
-            android:layout_marginBottom="16dp" />
-
-        <!-- Profile Picture Section -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-
-            <ImageView
-                android:id="@+id/profileImageView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/ic_launcher_background"
-                android:scaleType="centerCrop"
-                android:layout_alignParentStart="true" />
-
-            <EditText
-                android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email ID"
-                android:layout_toEndOf="@id/profileImageView"
-                android:layout_marginStart="16dp"
-                android:backgroundTint="#FFFFFF"
-                android:textColorHint="#CCCCCC"
-                android:textColor="#FFFFFF" />
-        </RelativeLayout>
+                android:orientation="horizontal">
 
-        <!-- Cancel and Check-In Buttons -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="bottom">
 
-            <Button
-                android:id="@+id/buttonCancel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Cancel"
-                android:backgroundTint="#444444"
-                android:textColor="#FFFFFF"
-                android:layout_marginEnd="8dp" />
+                <!-- Layer 1 -->
 
-            <Button
-                android:id="@+id/buttonCheckIn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Check-In"
-                android:backgroundTint="#6200EE"
-                android:textColor="#FFFFFF" />
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <!-- Visitor Type -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="8dp"
+                            android:text="Visitor Type"
+                            android:textColor="#FFFFFF" />
+
+                        <Spinner
+                            android:id="@+id/visitor_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:minHeight="50dp"
+                            android:padding="8dp"
+                            android:popupBackground="#303040" />
+
+                    </LinearLayout>
+
+
+                    <!-- FullName English -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Full Name English"
+                            android:textColor="#FFFFFF" />
+
+                        <EditText
+                            android:id="@+id/full_name_english"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:hint="Full Name English"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColor="#FFFFFF"
+                            android:textColorHint="#AAAAAA" />
+                    </LinearLayout>
+
+                    <!-- Id Number -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="ID Number"
+                            android:textColor="#FFFFFF" />
+
+                        <EditText
+                            android:id="@+id/eid_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:hint="Eid Number"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColor="#FFFFFF"
+                            android:textColorHint="#AAAAAA" />
+                    </LinearLayout>
+
+                    <!-- Card Number -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Card Number"
+                            android:textColor="#FFFFFF" />
+
+                        <EditText
+                            android:id="@+id/card_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:hint="Card Number"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColor="#FFFFFF"
+                            android:textColorHint="#AAAAAA" />
+                    </LinearLayout>
+
+                    <!-- Mobile Number -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Mobile Number"
+                            android:textColor="#FFFFFF" />
+
+                        <EditText
+                            android:id="@+id/mobile_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:hint="Mobile Number"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColor="#FFFFFF"
+                            android:textColorHint="#AAAAAA" />
+                    </LinearLayout>
+
+                    <!-- Access Card Number -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Access Card Number"
+                            android:textColor="#FFFFFF" />
+
+                        <EditText
+                            android:id="@+id/access_card_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:hint="Access Card Number"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColorHint="#AAAAAA" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <!-- Layer 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <!-- Visitor Purpose -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingEnd="8dp"
+                            android:text="Visit Purpose"
+                            android:textColor="#FFFFFF" />
+
+                        <Spinner
+                            android:id="@+id/visit_purpose"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:minHeight="50dp"
+                            android:padding="8dp"
+                            android:popupBackground="#303040" />
+
+                    </LinearLayout>
+
+
+                    <!-- FullName Arabic -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Full Name Arabic"
+                            android:textColor="#FFFFFF" />
+
+                        <EditText
+                            android:id="@+id/full_name_arabic"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:hint="Full Name Arabic"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColor="#FFFFFF"
+                            android:textColorHint="#AAAAAA" />
+                    </LinearLayout>
+
+                    <!-- Issue Date -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Issue Date"
+                            android:textColor="#FFFFFF" />
+
+                        <EditText
+                            android:id="@+id/issue_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:hint="2023-12-23"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColor="#FFFFFF"
+                            android:textColorHint="#AAAAAA" />
+                    </LinearLayout>
+
+                    <!-- Expiry Date -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Expiry Date"
+                            android:textColor="#FFFFFF" />
+
+                        <EditText
+                            android:id="@+id/expiry_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:hint="2025-12-22"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColor="#FFFFFF"
+                            android:textColorHint="#AAAAAA" />
+                    </LinearLayout>
+
+                    <!-- Email ID -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Email ID"
+                            android:textColor="#FFFFFF" />
+
+                        <EditText
+                            android:id="@+id/email_id"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:hint="Email ID"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColor="#FFFFFF"
+                            android:textColorHint="#AAAAAA" />
+                    </LinearLayout>
+
+                    <!-- Remarks -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Remarks"
+                            android:textColor="#FFFFFF" />
+
+                        <EditText
+                            android:id="@+id/remarks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:hint="Remark"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColor="#FFFFFF"
+                            android:textColorHint="#AAAAAA" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <!-- Layer 3 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+
+                    <!-- Profile Pic -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/profileImageView"
+                            android:layout_width="160dp"
+                            android:layout_height="160dp"
+                            android:layout_alignParentStart="true"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_launcher_background" />
+
+
+                    </LinearLayout>
+
+
+                    <!-- Nationality -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Nationality"
+                            android:textColor="#FFFFFF" />
+
+                        <EditText
+                            android:id="@+id/nationality"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:hint="Nationality"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColor="#FFFFFF"
+                            android:textColorHint="#AAAAAA" />
+                    </LinearLayout>
+
+                    <!-- Date of Birth-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Date of Birth"
+                            android:textColor="#FFFFFF" />
+
+                        <EditText
+                            android:id="@+id/date_of_birth"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:hint="2023-12-23"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColor="#FFFFFF"
+                            android:textColorHint="#AAAAAA" />
+                    </LinearLayout>
+
+                    <!-- Company Name -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:text="Company Name"
+                            android:textColor="#FFFFFF" />
+
+                        <EditText
+                            android:id="@+id/company_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/rounded_input"
+                            android:drawablePadding="8dp"
+                            android:hint="Company Name"
+                            android:inputType="text"
+                            android:padding="8dp"
+                            android:textColor="#FFFFFF"
+                            android:textColorHint="#AAAAAA" />
+                    </LinearLayout>
+
+                    <!-- Action Button Layer -->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/buttonCancel"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:backgroundTint="#444444"
+                            android:text="Cancel"
+                            android:textColor="#FFFFFF" />
+
+                        <Button
+                            android:id="@+id/buttonCheckIn"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:backgroundTint="#6200EE"
+                            android:text="Check-In"
+                            android:textColor="#FFFFFF" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <!--        &lt;!&ndash; Top Two Dropdowns (Visitor Type, Visit Purpose) &ndash;&gt;-->
+            <!--        <LinearLayout-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:orientation="horizontal"-->
+            <!--            android:layout_marginBottom="16dp">-->
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:orientation="vertical">-->
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="Visitor Type"-->
+            <!--                    android:textColor="#CCCCCC"-->
+            <!--                    android:layout_marginBottom="4dp" />-->
+
+            <!--                <Spinner-->
+            <!--                    android:id="@+id/spinnerVisitorType"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:backgroundTint="#FFFFFF" />-->
+            <!--            </LinearLayout>-->
+
+            <!--            <View-->
+            <!--                android:layout_width="16dp"-->
+            <!--                android:layout_height="match_parent" />-->
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:orientation="vertical">-->
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:text="Visit Purpose"-->
+            <!--                    android:textColor="#CCCCCC"-->
+            <!--                    android:layout_marginBottom="4dp" />-->
+
+            <!--                <Spinner-->
+            <!--                    android:id="@+id/spinnerVisitPurpose"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:backgroundTint="#FFFFFF" />-->
+            <!--            </LinearLayout>-->
+            <!--        </LinearLayout>-->
+
+            <!--        &lt;!&ndash; Name Fields &ndash;&gt;-->
+            <!--        <LinearLayout-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:orientation="horizontal"-->
+            <!--            android:layout_marginBottom="16dp">-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/editTextFullNameEnglish"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:hint="Full Name English"-->
+            <!--                android:backgroundTint="#FFFFFF"-->
+            <!--                android:textColorHint="#CCCCCC"-->
+            <!--                android:textColor="#FFFFFF" />-->
+
+            <!--            <View-->
+            <!--                android:layout_width="16dp"-->
+            <!--                android:layout_height="match_parent" />-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/editTextFullNameArabic"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:hint="Full Name Arabic"-->
+            <!--                android:backgroundTint="#FFFFFF"-->
+            <!--                android:textColorHint="#CCCCCC"-->
+            <!--                android:textColor="#FFFFFF" />-->
+            <!--        </LinearLayout>-->
+
+            <!--        &lt;!&ndash; ID and Card Details &ndash;&gt;-->
+            <!--        <LinearLayout-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:orientation="horizontal"-->
+            <!--            android:layout_marginBottom="16dp">-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/editTextIdNumber"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:hint="ID Number"-->
+            <!--                android:backgroundTint="#FFFFFF"-->
+            <!--                android:textColorHint="#CCCCCC"-->
+            <!--                android:textColor="#FFFFFF" />-->
+
+            <!--            <View-->
+            <!--                android:layout_width="16dp"-->
+            <!--                android:layout_height="match_parent" />-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/editTextCardNumber"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:hint="Card Number"-->
+            <!--                android:backgroundTint="#FFFFFF"-->
+            <!--                android:textColorHint="#CCCCCC"-->
+            <!--                android:textColor="#FFFFFF" />-->
+            <!--        </LinearLayout>-->
+
+            <!--        &lt;!&ndash; Mobile Number &ndash;&gt;-->
+            <!--        <EditText-->
+            <!--            android:id="@+id/editTextMobileNumber"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:hint="Mobile Number"-->
+            <!--            android:backgroundTint="#FFFFFF"-->
+            <!--            android:textColorHint="#CCCCCC"-->
+            <!--            android:textColor="#FFFFFF"-->
+            <!--            android:layout_marginBottom="16dp" />-->
+
+            <!--        &lt;!&ndash; Profile Picture Section &ndash;&gt;-->
+            <!--        <RelativeLayout-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_marginBottom="16dp">-->
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/profileImageView"-->
+            <!--                android:layout_width="100dp"-->
+            <!--                android:layout_height="100dp"-->
+            <!--                android:src="@drawable/ic_launcher_background"-->
+            <!--                android:scaleType="centerCrop"-->
+            <!--                android:layout_alignParentStart="true" />-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/editTextEmail"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:hint="Email ID"-->
+            <!--                android:layout_toEndOf="@id/profileImageView"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:backgroundTint="#FFFFFF"-->
+            <!--                android:textColorHint="#CCCCCC"-->
+            <!--                android:textColor="#FFFFFF" />-->
+            <!--        </RelativeLayout>-->
+
+            <!--        &lt;!&ndash; Cancel and Check-In Buttons &ndash;&gt;-->
+            <!--        <LinearLayout-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:orientation="horizontal"-->
+            <!--            android:layout_gravity="bottom">-->
+
+            <!--            <Button-->
+            <!--                android:id="@+id/buttonCancel"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:text="Cancel"-->
+            <!--                android:backgroundTint="#444444"-->
+            <!--                android:textColor="#FFFFFF"-->
+            <!--                android:layout_marginEnd="8dp" />-->
+
+            <!--            <Button-->
+            <!--                android:id="@+id/buttonCheckIn"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:text="Check-In"-->
+            <!--                android:backgroundTint="#6200EE"-->
+            <!--                android:textColor="#FFFFFF" />-->
+            <!--        </LinearLayout>-->
+
+
         </LinearLayout>
 
 

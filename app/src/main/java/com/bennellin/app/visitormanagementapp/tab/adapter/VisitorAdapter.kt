@@ -1,12 +1,13 @@
 package com.bennellin.app.visitormanagementapp.tab.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bennellin.app.visitormanagementapp.R
-import com.bennellin.app.visitormanagementapp.tab.network.Visitor
+import com.bennellin.app.visitormanagementapp.tab.network.models.Visitor
 
 class VisitorAdapter(private val visitors: List<Visitor>) :
     RecyclerView.Adapter<VisitorAdapter.VisitorViewHolder>() {
@@ -16,10 +17,15 @@ class VisitorAdapter(private val visitors: List<Visitor>) :
         return VisitorViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: VisitorViewHolder, position: Int) {
         val visitor = visitors[position]
         holder.entryTime.text = visitor.entryTime
-        holder.exitTime.text = visitor.exitTime
+        if (visitor.exitTime == "0001-01-01T00:00:00") {
+            holder.exitTime.text = "Still Inside"
+        } else {
+            holder.exitTime.text = visitor.exitTime
+        }
         holder.name.text = visitor.name
         holder.idNumber.text = visitor.idNumber
         holder.visitPurpose.text = visitor.visitPurpose

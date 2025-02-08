@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_eid_nfc"
+        android:icon="@drawable/baseline_id_card_24"
+        android:title="EID SCAN" />
+    <item
+        android:id="@+id/menu_manual"
+        android:icon="@drawable/baseline_manual_24"
+        android:title="MANUAL" />
+</menu>

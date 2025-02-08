@@ -1,7 +1,12 @@
 package com.bennellin.app.visitormanagementapp.tab.network
 
 import com.bennellin.app.visitormanagementapp.models.AuthResponse
+import com.bennellin.app.visitormanagementapp.tab.network.models.CheckInApiRequestBody
+import com.bennellin.app.visitormanagementapp.tab.network.models.VisitPurpose
+import com.bennellin.app.visitormanagementapp.tab.network.models.Visitor
+import com.bennellin.app.visitormanagementapp.tab.network.models.VisitorType
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -22,5 +27,27 @@ interface ApiService {
     fun getNVisilorsList(
         @Header("Authorization") authToken: String,
         @Query("limit") limit: Int
-    ):Call<List<Visitor>>
+    ): Call<List<Visitor>>
+
+    @GET("/api/Values/GetVisitorTypes?")
+    fun getVisitorType(
+        @Header("Authorization") authToken: String,
+    ): Call<List<VisitorType>>
+
+    @GET("/api/Values/GetVisitPurpose?")
+    fun getVisitorPurpose(
+        @Header("Authorization") authToken: String,
+    ): Call<List<VisitPurpose>>
+
+    @POST("/api/Values/InsertEIDData")
+    fun checkInRequest(
+        @Header("Authorization") authToken: String,
+        @Body requestBody: CheckInApiRequestBody
+    ): Call<String>
+
+    @GET("/api/Values/MarkCheckoutTime?")
+    fun checkOutVisitor(
+        @Header("Authorization") authToken: String,
+        @Query("IDEidReadings") idEidReadings: Int
+    ): Call<String>
 }

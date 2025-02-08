@@ -21,7 +21,6 @@ public class LogTextView extends TextView {
     };
 
     private String data;
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public LogTextView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
