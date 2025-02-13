@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bennellin.app.visitormanagementapp.R
 import com.bennellin.app.visitormanagementapp.tab.network.models.Visitor
 
-class VisitorAdapter(private val visitors: List<Visitor>) :
+class VisitorAdapter(private var visitors: List<Visitor>) :
     RecyclerView.Adapter<VisitorAdapter.VisitorViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VisitorViewHolder {
@@ -45,6 +45,11 @@ class VisitorAdapter(private val visitors: List<Visitor>) :
         } else {
             holder.registrationStatus.visibility = View.INVISIBLE
         }
+    }
+
+    fun updateList(newList: List<Visitor>) {
+        visitors = newList
+        notifyDataSetChanged()
     }
 
     override fun getItemCount() = visitors.size

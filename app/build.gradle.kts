@@ -55,7 +55,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
+//    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar"))))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
 //    implementation(libs.hilt.android)
 //    kapt(libs.hilt.compiler)
     implementation(libs.androidx.cardview)
@@ -78,6 +79,8 @@ dependencies {
     implementation("com.madgag.spongycastle:prov:1.54.0.0")
     implementation("com.madgag.spongycastle:pkix:1.54.0.0")
     implementation("com.madgag.spongycastle:pg:1.54.0.0")
+
+    implementation(files("libs/acssmc-1.1.6.aar"))
 
 }
 

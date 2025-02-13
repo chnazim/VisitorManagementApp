@@ -39,6 +39,11 @@
         android:theme="@style/Theme.VisitorManagementApp"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".tab.activity.EIDScanOTGActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:theme="@style/Theme.VisitorManagementApp" />
+        <activity
             android:name=".tab.activity.ManualEntryActivity"
             android:exported="false"
             android:screenOrientation="landscape"

@@ -2,7 +2,11 @@
     <item
         android:id="@+id/menu_eid_nfc"
         android:icon="@drawable/baseline_id_card_24"
-        android:title="EID SCAN" />
+        android:title="EID NFC SCAN" />
+    <item
+        android:id="@+id/menu_eid_otg"
+        android:icon="@drawable/baseline_usb_24"
+        android:title="EID USB SCAN" />
     <item
         android:id="@+id/menu_manual"
         android:icon="@drawable/baseline_manual_24"

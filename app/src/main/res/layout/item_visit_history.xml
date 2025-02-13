@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/row_background"
+    android:orientation="horizontal"
+    android:padding="2dp">
+
+
+    <!-- Entry Time -->
+    <TextView
+        android:id="@+id/tv_entry_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="Entry Time"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp" />
+
+    <!-- Exit Time -->
+    <TextView
+        android:id="@+id/tv_exit_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="Exit Time"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp" />
+
+    <!-- Name -->
+    <TextView
+        android:id="@+id/tv_id_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="Name"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp" />
+
+    <!-- ID Number -->
+    <TextView
+        android:id="@+id/tv_id_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="Id Number"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp" />
+
+
+    <!-- Visit Purpose -->
+    <TextView
+        android:id="@+id/tv_visit_purpose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="Visit Purpose"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp" />
+
+    <!-- Remarks -->
+    <TextView
+        android:id="@+id/tv_remark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="Remarks"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp" />
+
+    <!-- Contact Number -->
+    <TextView
+        android:id="@+id/tv_contact_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="+971-52999815"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp" />
+
+    <!-- Company Name -->
+    <TextView
+        android:id="@+id/tv_company_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="XYZ Company"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp" />
+
+    <!-- Access Card Number -->
+    <TextView
+        android:id="@+id/tv_access_card_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="4dp"
+        android:text="998776"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp" />
+
+
+</LinearLayout>

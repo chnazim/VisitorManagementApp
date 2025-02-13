@@ -10,9 +10,14 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bennellin.app.visitormanagementapp.R
 import com.bennellin.app.visitormanagementapp.databinding.ActivityDetailViewBinding
 import com.bennellin.app.visitormanagementapp.general.SharedPreferenceManager
+import com.bennellin.app.visitormanagementapp.general.utils
+import com.bennellin.app.visitormanagementapp.tab.adapter.VisitHistoryAdapter
+import com.bennellin.app.visitormanagementapp.tab.adapter.VisitorAdapterDashboard
 import com.bennellin.app.visitormanagementapp.tab.network.RetrofitInstance
 import com.bennellin.app.visitormanagementapp.tab.network.models.Visitor
 import com.bennellin.app.visitormanagementapp.utils.Bitmaps
@@ -24,6 +29,7 @@ class DetailViewActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailViewBinding
     private lateinit var visitor: Visitor
+    private lateinit var visitHistoryAdapter: VisitHistoryAdapter
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,6 +50,12 @@ class DetailViewActivity : AppCompatActivity() {
         binding.txtRemark.text = "Description:" + visitor.remark
         binding.txtCompany.text = "Company Name:" + visitor.companyName
         displayPhoto(visitor.profilePicture)
+
+
+        binding.recyclerViewVisitHistory.layoutManager = LinearLayoutManager(this)
+        binding.recyclerViewVisitHistory.setHasFixedSize(true)
+
+        callVisitHistoryApi(SharedPreferenceManager.getAuthToken("auth_token"), visitor.visitorID)
 
         binding.closeButton.setOnClickListener({
             callBackPressed()
@@ -81,6 +93,34 @@ class DetailViewActivity : AppCompatActivity() {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
             finish()
+        })
+
+    }
+
+    private fun callVisitHistoryApi(authToken: String?, visitorID: String) {
+        val call = RetrofitInstance.apiService.getVisitHistory("Bearer $authToken", visitorID)
+
+        call.enqueue(object : Callback<List<Visitor>> {
+            override fun onResponse(call: Call<List<Visitor>>, response: Response<List<Visitor>>) {
+                if (response.isSuccessful) {
+                    println("api call successful ${response.body()}")
+                    val visitorList = response.body() ?: emptyList()
+                    visitHistoryAdapter = VisitHistoryAdapter(visitorList)
+                    val divider = DividerItemDecoration(
+                        this@DetailViewActivity,
+                        DividerItemDecoration.VERTICAL
+                    )
+                    binding.recyclerViewVisitHistory.addItemDecoration(divider)
+                    binding.recyclerViewVisitHistory.adapter = visitHistoryAdapter
+                } else {
+                    println("Response Error: ${response.code()} - ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<List<Visitor>>, t: Throwable) {
+                println("onFailure Error: ${t.message}")
+            }
+
         })
 
     }

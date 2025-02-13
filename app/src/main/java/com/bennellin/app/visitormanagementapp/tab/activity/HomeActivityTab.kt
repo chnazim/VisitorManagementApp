@@ -170,6 +170,11 @@ class HomeActivityTab : AppCompatActivity() {
                     true
                 }
 
+                R.id.menu_eid_otg -> {
+                    callEIDScanOTG()
+                    true
+                }
+
                 R.id.menu_manual -> {
                     callManualEntry()
                     true
@@ -181,6 +186,11 @@ class HomeActivityTab : AppCompatActivity() {
 
         // Show the PopupMenu
         popupMenu.show()
+    }
+
+    private fun callEIDScanOTG() {
+        val intent = Intent(this@HomeActivityTab, EIDScanOTGActivity::class.java)
+        startActivity(intent)
     }
 
     private fun callManualEntry() {

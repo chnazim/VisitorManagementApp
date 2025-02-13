@@ -12,7 +12,7 @@ import com.bennellin.app.visitormanagementapp.R
 import com.bennellin.app.visitormanagementapp.tab.network.models.Visitor
 
 class VisitorAdapterDashboard(
-    private val visitors: List<Visitor>,
+    private var visitors: List<Visitor>,
     private val onPositiveClick: (Visitor) -> Unit,
     private val onCallDetailView: (Visitor) -> Unit
 ) :
@@ -63,6 +63,12 @@ class VisitorAdapterDashboard(
 
         }
     }
+
+    fun updateList(newList: List<Visitor>) {
+        visitors = newList
+        notifyDataSetChanged()
+    }
+
 
     override fun getItemCount() = visitors.size
 
