@@ -75,12 +75,12 @@ dependencies {
     implementation(project(":EIDAToolkit"))
     implementation(project(":xmlsec2-release"))
     implementation(project(":nfcreader-plugin-release"))
+    implementation(project(":acs-plugin-release"))
     implementation("com.madgag.spongycastle:core:1.54.0.0")
     implementation("com.madgag.spongycastle:prov:1.54.0.0")
     implementation("com.madgag.spongycastle:pkix:1.54.0.0")
     implementation("com.madgag.spongycastle:pg:1.54.0.0")
 
-    implementation(files("libs/acssmc-1.1.6.aar"))
 
 }
 

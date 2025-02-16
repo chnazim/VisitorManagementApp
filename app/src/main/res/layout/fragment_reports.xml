@@ -141,12 +141,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="2dp"
-                                android:text="Visitor Type"
+                                android:text="Field"
                                 android:textColor="#FFFFFF"
                                 android:textSize="14sp" />
 
                             <Spinner
-                                android:id="@+id/visitor_type"
+                                android:id="@+id/field_type"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/rounded_input"
@@ -169,24 +169,223 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="2dp"
-                                android:text="Visit Purpose"
+                                android:text="Query"
                                 android:textColor="#FFFFFF"
                                 android:textSize="14sp" />
 
-                            <Spinner
-                                android:id="@+id/visit_purpose"
+                            <EditText
+                                android:id="@+id/query"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/rounded_input"
                                 android:drawablePadding="8dp"
+                                android:hint="Query"
+                                android:lines="1"
+                                android:singleLine="true"
+                                android:imeOptions="actionDone"
                                 android:minHeight="30dp"
-                                android:padding="4dp"
-                                android:popupBackground="#303040" />
+                                android:padding="8dp"
+                                android:textColor="#FFFFFF"
+                                android:textColorHint="#888"
+                                android:textSize="14sp" />
 
                         </LinearLayout>
 
+                        <!--                        <LinearLayout-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_gravity="center"-->
+                        <!--                            android:layout_margin="2dp"-->
+                        <!--                            android:layout_weight="1"-->
+                        <!--                            android:orientation="vertical">-->
+
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:layout_margin="2dp"-->
+                        <!--                                android:text="Visitor Type"-->
+                        <!--                                android:textColor="#FFFFFF"-->
+                        <!--                                android:textSize="14sp" />-->
+
+                        <!--                            <Spinner-->
+                        <!--                                android:id="@+id/visitor_type"-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:background="@drawable/rounded_input"-->
+                        <!--                                android:drawablePadding="8dp"-->
+                        <!--                                android:minHeight="30dp"-->
+                        <!--                                android:padding="4dp"-->
+                        <!--                                android:popupBackground="#303040" />-->
+
+                        <!--                        </LinearLayout>-->
+
+                        <!--                        <LinearLayout-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_gravity="center"-->
+                        <!--                            android:layout_margin="2dp"-->
+                        <!--                            android:layout_weight="1"-->
+                        <!--                            android:orientation="vertical">-->
+
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:layout_margin="2dp"-->
+                        <!--                                android:text="Visit Purpose"-->
+                        <!--                                android:textColor="#FFFFFF"-->
+                        <!--                                android:textSize="14sp" />-->
+
+                        <!--                            <Spinner-->
+                        <!--                                android:id="@+id/visit_purpose"-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:background="@drawable/rounded_input"-->
+                        <!--                                android:drawablePadding="8dp"-->
+                        <!--                                android:minHeight="30dp"-->
+                        <!--                                android:padding="4dp"-->
+                        <!--                                android:popupBackground="#303040" />-->
+
+                        <!--                        </LinearLayout>-->
+
 
                     </LinearLayout>
+
+                    <!--                    <LinearLayout-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:orientation="horizontal">-->
+
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_gravity="center"-->
+                    <!--                            android:layout_margin="2dp"-->
+                    <!--                            android:layout_weight="1"-->
+                    <!--                            android:orientation="vertical">-->
+
+                    <!--                            <TextView-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:layout_margin="2dp"-->
+                    <!--                                android:text="Name"-->
+                    <!--                                android:textColor="#FFFFFF"-->
+                    <!--                                android:textSize="14sp" />-->
+
+                    <!--                            <EditText-->
+                    <!--                                android:id="@+id/name"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:background="@drawable/rounded_input"-->
+                    <!--                                android:drawablePadding="8dp"-->
+                    <!--                                android:hint="Enter Name"-->
+                    <!--                                android:lines="1"-->
+                    <!--                                android:minHeight="30dp"-->
+                    <!--                                android:padding="8dp"-->
+                    <!--                                android:textColor="#FFFFFF"-->
+                    <!--                                android:textColorHint="#888"-->
+                    <!--                                android:textSize="14sp" />-->
+
+                    <!--                        </LinearLayout>-->
+
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_gravity="center"-->
+                    <!--                            android:layout_margin="2dp"-->
+                    <!--                            android:layout_weight="1"-->
+                    <!--                            android:orientation="vertical">-->
+
+                    <!--                            <TextView-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:layout_margin="2dp"-->
+                    <!--                                android:text="Email ID"-->
+                    <!--                                android:textColor="#FFFFFF"-->
+                    <!--                                android:textSize="14sp" />-->
+
+                    <!--                            <EditText-->
+                    <!--                                android:id="@+id/emailId"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:layout_marginStart="8dp"-->
+                    <!--                                android:background="@drawable/rounded_input"-->
+                    <!--                                android:drawablePadding="8dp"-->
+                    <!--                                android:hint="Email id"-->
+                    <!--                                android:lines="1"-->
+                    <!--                                android:minHeight="30dp"-->
+                    <!--                                android:padding="8dp"-->
+                    <!--                                android:textColor="#FFFFFF"-->
+                    <!--                                android:textColorHint="#888"-->
+                    <!--                                android:textSize="14sp" />-->
+
+                    <!--                        </LinearLayout>-->
+
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_gravity="center"-->
+                    <!--                            android:layout_margin="2dp"-->
+                    <!--                            android:layout_weight="1"-->
+                    <!--                            android:orientation="vertical">-->
+
+                    <!--                            <TextView-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:layout_margin="2dp"-->
+                    <!--                                android:text="Phone Number"-->
+                    <!--                                android:textColor="#FFFFFF"-->
+                    <!--                                android:textSize="14sp" />-->
+
+                    <!--                            <EditText-->
+                    <!--                                android:id="@+id/phoneNumber"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:background="@drawable/rounded_input"-->
+                    <!--                                android:drawablePadding="8dp"-->
+                    <!--                                android:hint="Phone Number"-->
+                    <!--                                android:lines="1"-->
+                    <!--                                android:minHeight="30dp"-->
+                    <!--                                android:padding="8dp"-->
+                    <!--                                android:textColor="#FFFFFF"-->
+                    <!--                                android:textColorHint="#888"-->
+                    <!--                                android:textSize="14sp" />-->
+
+                    <!--                        </LinearLayout>-->
+
+                    <!--                        <LinearLayout-->
+                    <!--                            android:layout_width="match_parent"-->
+                    <!--                            android:layout_height="wrap_content"-->
+                    <!--                            android:layout_gravity="center"-->
+                    <!--                            android:layout_margin="2dp"-->
+                    <!--                            android:layout_weight="1"-->
+                    <!--                            android:orientation="vertical">-->
+
+                    <!--                            <TextView-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:layout_margin="2dp"-->
+                    <!--                                android:text="ID Number"-->
+                    <!--                                android:textColor="#FFFFFF"-->
+                    <!--                                android:textSize="14sp" />-->
+
+                    <!--                            <EditText-->
+                    <!--                                android:id="@+id/idNumber"-->
+                    <!--                                android:layout_width="match_parent"-->
+                    <!--                                android:layout_height="wrap_content"-->
+                    <!--                                android:background="@drawable/rounded_input"-->
+                    <!--                                android:drawablePadding="8dp"-->
+                    <!--                                android:hint="Id Number"-->
+                    <!--                                android:lines="1"-->
+                    <!--                                android:minHeight="30dp"-->
+                    <!--                                android:padding="8dp"-->
+                    <!--                                android:textColor="#FFFFFF"-->
+                    <!--                                android:textColorHint="#888"-->
+                    <!--                                android:textSize="14sp" />-->
+
+                    <!--                        </LinearLayout>-->
+
+
+                    <!--                    </LinearLayout>-->
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -201,27 +400,6 @@
                             android:layout_weight="1"
                             android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="2dp"
-                                android:text="Name"
-                                android:textColor="#FFFFFF"
-                                android:textSize="14sp" />
-
-                            <EditText
-                                android:id="@+id/name"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/rounded_input"
-                                android:drawablePadding="8dp"
-                                android:hint="Enter Name"
-                                android:lines="1"
-                                android:minHeight="30dp"
-                                android:padding="8dp"
-                                android:textColor="#FFFFFF"
-                                android:textColorHint="#888"
-                                android:textSize="14sp" />
 
                         </LinearLayout>
 
@@ -229,32 +407,41 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_margin="2dp"
+                            android:layout_margin="8dp"
                             android:layout_weight="1"
-                            android:orientation="vertical">
+                            android:orientation="horizontal">
 
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="2dp"
-                                android:text="Email ID"
-                                android:textColor="#FFFFFF"
-                                android:textSize="14sp" />
+                                android:orientation="horizontal">
 
-                            <EditText
-                                android:id="@+id/emailId"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:background="@drawable/rounded_input"
-                                android:drawablePadding="8dp"
-                                android:hint="Email id"
-                                android:lines="1"
-                                android:minHeight="30dp"
-                                android:padding="8dp"
-                                android:textColor="#FFFFFF"
-                                android:textColorHint="#888"
-                                android:textSize="14sp" />
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1">
+
+                                    <Button
+                                        android:id="@+id/btnDownload"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:backgroundTint="@color/teal_700"
+                                        android:drawableLeft="@drawable/ic_download"
+                                        android:drawablePadding="8dp"
+                                        android:minHeight="40dp"
+                                        android:text=" Download"
+                                        android:textSize="14sp"
+                                        android:textColor="@android:color/white" />
+
+                                </LinearLayout>
+
+
+                            </LinearLayout>
 
                         </LinearLayout>
 
@@ -262,101 +449,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_margin="2dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="2dp"
-                                android:text="Phone Number"
-                                android:textColor="#FFFFFF"
-                                android:textSize="14sp" />
-
-                            <EditText
-                                android:id="@+id/phoneNumber"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/rounded_input"
-                                android:drawablePadding="8dp"
-                                android:hint="Phone Number"
-                                android:lines="1"
-                                android:minHeight="30dp"
-                                android:padding="8dp"
-                                android:textColor="#FFFFFF"
-                                android:textColorHint="#888"
-                                android:textSize="14sp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_margin="2dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="2dp"
-                                android:text="ID Number"
-                                android:textColor="#FFFFFF"
-                                android:textSize="14sp" />
-
-                            <EditText
-                                android:id="@+id/idNumber"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@drawable/rounded_input"
-                                android:drawablePadding="8dp"
-                                android:hint="Id Number"
-                                android:lines="1"
-                                android:minHeight="30dp"
-                                android:padding="8dp"
-                                android:textColor="#FFFFFF"
-                                android:textColorHint="#888"
-                                android:textSize="14sp" />
-
-                        </LinearLayout>
-
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_margin="2dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_margin="2dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="8dp"
+                            android:layout_margin="8dp"
                             android:layout_weight="1"
                             android:orientation="horizontal">
 
@@ -395,6 +488,357 @@
 
 
                 </LinearLayout>
+
+                <!--                <LinearLayout-->
+                <!--                    android:id="@+id/filters"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_below="@+id/header"-->
+                <!--                    android:layout_margin="10dp"-->
+                <!--                    android:background="@color/background_secondary"-->
+                <!--                    android:orientation="vertical"-->
+                <!--                    android:padding="16dp">-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:orientation="horizontal">-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:layout_margin="2dp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_margin="2dp"-->
+                <!--                                android:text="Visitors From Date"-->
+                <!--                                android:textColor="#FFFFFF"-->
+                <!--                                android:textSize="14sp" />-->
+
+                <!--                            <EditText-->
+                <!--                                android:id="@+id/filterFromDate"-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:background="@drawable/rounded_input"-->
+                <!--                                android:clickable="true"-->
+                <!--                                android:drawablePadding="8dp"-->
+                <!--                                android:focusable="false"-->
+                <!--                                android:hint="10/12/2024 10:00 AM"-->
+                <!--                                android:lines="1"-->
+                <!--                                android:minHeight="30dp"-->
+                <!--                                android:padding="8dp"-->
+                <!--                                android:textColor="#FFFFFF"-->
+                <!--                                android:textColorHint="#888"-->
+                <!--                                android:textSize="14sp" />-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:layout_margin="2dp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_margin="2dp"-->
+                <!--                                android:text="Visitors To Date"-->
+                <!--                                android:textColor="#FFFFFF"-->
+                <!--                                android:textSize="14sp" />-->
+
+                <!--                            <EditText-->
+                <!--                                android:id="@+id/filterToDate"-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_marginStart="8dp"-->
+                <!--                                android:background="@drawable/rounded_input"-->
+                <!--                                android:clickable="true"-->
+                <!--                                android:drawablePadding="8dp"-->
+                <!--                                android:focusable="false"-->
+                <!--                                android:hint="10/12/2024 10:00 PM"-->
+                <!--                                android:lines="1"-->
+                <!--                                android:minHeight="30dp"-->
+                <!--                                android:padding="8dp"-->
+                <!--                                android:textColor="#FFFFFF"-->
+                <!--                                android:textColorHint="#888"-->
+                <!--                                android:textSize="14sp" />-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:layout_margin="2dp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_margin="2dp"-->
+                <!--                                android:text="Visitor Type"-->
+                <!--                                android:textColor="#FFFFFF"-->
+                <!--                                android:textSize="14sp" />-->
+
+                <!--                            <Spinner-->
+                <!--                                android:id="@+id/visitor_type"-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:background="@drawable/rounded_input"-->
+                <!--                                android:drawablePadding="8dp"-->
+                <!--                                android:minHeight="30dp"-->
+                <!--                                android:padding="4dp"-->
+                <!--                                android:popupBackground="#303040" />-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:layout_margin="2dp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_margin="2dp"-->
+                <!--                                android:text="Visit Purpose"-->
+                <!--                                android:textColor="#FFFFFF"-->
+                <!--                                android:textSize="14sp" />-->
+
+                <!--                            <Spinner-->
+                <!--                                android:id="@+id/visit_purpose"-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:background="@drawable/rounded_input"-->
+                <!--                                android:drawablePadding="8dp"-->
+                <!--                                android:minHeight="30dp"-->
+                <!--                                android:padding="4dp"-->
+                <!--                                android:popupBackground="#303040" />-->
+
+                <!--                        </LinearLayout>-->
+
+
+                <!--                    </LinearLayout>-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:orientation="horizontal">-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:layout_margin="2dp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_margin="2dp"-->
+                <!--                                android:text="Name"-->
+                <!--                                android:textColor="#FFFFFF"-->
+                <!--                                android:textSize="14sp" />-->
+
+                <!--                            <EditText-->
+                <!--                                android:id="@+id/name"-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:background="@drawable/rounded_input"-->
+                <!--                                android:drawablePadding="8dp"-->
+                <!--                                android:hint="Enter Name"-->
+                <!--                                android:lines="1"-->
+                <!--                                android:minHeight="30dp"-->
+                <!--                                android:padding="8dp"-->
+                <!--                                android:textColor="#FFFFFF"-->
+                <!--                                android:textColorHint="#888"-->
+                <!--                                android:textSize="14sp" />-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:layout_margin="2dp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_margin="2dp"-->
+                <!--                                android:text="Email ID"-->
+                <!--                                android:textColor="#FFFFFF"-->
+                <!--                                android:textSize="14sp" />-->
+
+                <!--                            <EditText-->
+                <!--                                android:id="@+id/emailId"-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_marginStart="8dp"-->
+                <!--                                android:background="@drawable/rounded_input"-->
+                <!--                                android:drawablePadding="8dp"-->
+                <!--                                android:hint="Email id"-->
+                <!--                                android:lines="1"-->
+                <!--                                android:minHeight="30dp"-->
+                <!--                                android:padding="8dp"-->
+                <!--                                android:textColor="#FFFFFF"-->
+                <!--                                android:textColorHint="#888"-->
+                <!--                                android:textSize="14sp" />-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:layout_margin="2dp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_margin="2dp"-->
+                <!--                                android:text="Phone Number"-->
+                <!--                                android:textColor="#FFFFFF"-->
+                <!--                                android:textSize="14sp" />-->
+
+                <!--                            <EditText-->
+                <!--                                android:id="@+id/phoneNumber"-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:background="@drawable/rounded_input"-->
+                <!--                                android:drawablePadding="8dp"-->
+                <!--                                android:hint="Phone Number"-->
+                <!--                                android:lines="1"-->
+                <!--                                android:minHeight="30dp"-->
+                <!--                                android:padding="8dp"-->
+                <!--                                android:textColor="#FFFFFF"-->
+                <!--                                android:textColorHint="#888"-->
+                <!--                                android:textSize="14sp" />-->
+
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:layout_margin="2dp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:orientation="vertical">-->
+
+                <!--                            <TextView-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:layout_margin="2dp"-->
+                <!--                                android:text="ID Number"-->
+                <!--                                android:textColor="#FFFFFF"-->
+                <!--                                android:textSize="14sp" />-->
+
+                <!--                            <EditText-->
+                <!--                                android:id="@+id/idNumber"-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content"-->
+                <!--                                android:background="@drawable/rounded_input"-->
+                <!--                                android:drawablePadding="8dp"-->
+                <!--                                android:hint="Id Number"-->
+                <!--                                android:lines="1"-->
+                <!--                                android:minHeight="30dp"-->
+                <!--                                android:padding="8dp"-->
+                <!--                                android:textColor="#FFFFFF"-->
+                <!--                                android:textColorHint="#888"-->
+                <!--                                android:textSize="14sp" />-->
+
+                <!--                        </LinearLayout>-->
+
+
+                <!--                    </LinearLayout>-->
+
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:orientation="horizontal">-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:layout_margin="2dp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:orientation="vertical">-->
+
+
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:layout_margin="2dp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:orientation="vertical">-->
+
+
+                <!--                        </LinearLayout>-->
+
+                <!--                        <LinearLayout-->
+                <!--                            android:layout_width="match_parent"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_gravity="center"-->
+                <!--                            android:layout_marginTop="8dp"-->
+                <!--                            android:layout_weight="1"-->
+                <!--                            android:orientation="horizontal">-->
+
+                <!--                            <LinearLayout-->
+                <!--                                android:layout_width="match_parent"-->
+                <!--                                android:layout_height="wrap_content">-->
+
+                <!--                                <Button-->
+                <!--                                    android:id="@+id/resetButton"-->
+                <!--                                    android:layout_width="match_parent"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:layout_marginStart="2dp"-->
+                <!--                                    android:layout_weight="1"-->
+                <!--                                    android:backgroundTint="#5A5F74"-->
+                <!--                                    android:minHeight="40dp"-->
+                <!--                                    android:text="Reset"-->
+                <!--                                    android:textColor="#FFFFFF"-->
+                <!--                                    android:textSize="14sp" />-->
+
+                <!--                                <Button-->
+                <!--                                    android:id="@+id/searchButton"-->
+                <!--                                    android:layout_width="match_parent"-->
+                <!--                                    android:layout_height="wrap_content"-->
+                <!--                                    android:layout_marginStart="8dp"-->
+                <!--                                    android:layout_weight="1"-->
+                <!--                                    android:minHeight="40dp"-->
+                <!--                                    android:text="Search"-->
+                <!--                                    android:textColor="#FFFFFF"-->
+                <!--                                    android:textSize="14sp" />-->
+                <!--                            </LinearLayout>-->
+
+                <!--                        </LinearLayout>-->
+
+
+                <!--                    </LinearLayout>-->
+
+
+                <!--                </LinearLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"

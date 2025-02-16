@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.NFC_PREFERRED_PAYMENT_INFO" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
@@ -24,6 +25,10 @@
 
     <uses-feature android:name="android.hardware.camera.any" />
 
+    <uses-feature android:name="android.hardware.usb.host" />
+
+    <uses-permission android:name="android.permission.USB_PERMISSION" />
+
     <application
         android:name=".general.MyApp"
         android:allowBackup="true"
@@ -38,11 +43,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VisitorManagementApp"
         android:usesCleartextTraffic="true">
+
+        <meta-data
+            android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"
+            android:resource="@xml/usb_device_filter" />
+
         <activity
             android:name=".tab.activity.EIDScanOTGActivity"
             android:exported="false"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.VisitorManagementApp" />
+            android:theme="@style/Theme.VisitorManagementApp">
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".tab.activity.ManualEntryActivity"
             android:exported="false"
@@ -134,6 +149,16 @@
         <activity
             android:name=".activity.MainActivity"
             android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
     </application>
 
 </manifest>

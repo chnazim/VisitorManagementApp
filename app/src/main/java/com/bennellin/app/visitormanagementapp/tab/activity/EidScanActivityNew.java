@@ -75,6 +75,9 @@ public class EidScanActivityNew extends AppCompatActivity {
 
     private void loadFragment() {
         fragment = new PublicDataReadingFragment();
+        Bundle args = new Bundle();
+        args.putString("source", "NFC");
+        fragment.setArguments(args);
         getSupportFragmentManager().beginTransaction().replace(R.id.root, fragment).commit();
     }
 

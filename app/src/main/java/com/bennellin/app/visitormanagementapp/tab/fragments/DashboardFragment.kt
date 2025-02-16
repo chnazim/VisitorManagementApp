@@ -1,5 +1,6 @@
 package com.bennellin.app.visitormanagementapp.tab.fragments
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
@@ -22,11 +23,13 @@ import com.bennellin.app.visitormanagementapp.databinding.FragmentDashboardBindi
 import com.bennellin.app.visitormanagementapp.general.SharedPreferenceManager
 import com.bennellin.app.visitormanagementapp.general.utils
 import com.bennellin.app.visitormanagementapp.tab.activity.DetailViewActivity
+import com.bennellin.app.visitormanagementapp.tab.adapter.VisitHistoryAdapter
 import com.bennellin.app.visitormanagementapp.tab.adapter.VisitorAdapterDashboard
 import com.bennellin.app.visitormanagementapp.tab.network.RetrofitInstance
 import com.bennellin.app.visitormanagementapp.tab.network.models.FilterApiRequestBody
 import com.bennellin.app.visitormanagementapp.tab.network.models.VisitPurpose
 import com.bennellin.app.visitormanagementapp.tab.network.models.Visitor
+import com.bennellin.app.visitormanagementapp.tab.network.models.VisitorStatistics
 import com.bennellin.app.visitormanagementapp.tab.network.models.VisitorType
 import retrofit2.Call
 import retrofit2.Callback
@@ -53,13 +56,15 @@ class DashboardFragment : Fragment() {
 
     private var fromDate: Calendar = Calendar.getInstance()
     private var toDate: Calendar = Calendar.getInstance()
+    private lateinit var selectedType: String
 
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
-    private var selectedVisitorType: VisitorType? = null
-    private var selectedVisitPurpose: VisitPurpose? = null
+//    private var selectedVisitorType: VisitorType? = null
+//    private var selectedVisitPurpose: VisitPurpose? = null
 
     private lateinit var binding: FragmentDashboardBinding
+    val options = arrayOf("Name", "ID Number", "Contact Detail", "Visitor Type", "Visit Purpose")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,9 +85,33 @@ class DashboardFragment : Fragment() {
         binding.visitorRecyclerView.setHasFixedSize(true)
 
 
-
         callNVisitorListApi(SharedPreferenceManager.getAuthToken("auth_token"))
+        callVisitorStatistics(SharedPreferenceManager.getAuthToken("auth_token"))
 
+        val adapter =
+            ArrayAdapter(
+                requireContext().applicationContext,
+                R.layout.spinner_item_layout_filter,
+                options
+            )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.fieldType.adapter = adapter
+
+        binding.fieldType.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parentView: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                selectedType = getSelectedOption(position)
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>) {
+                // Handle case when nothing is selected
+                selectedType = getSelectedOption(0)
+            }
+        }
 
         val todayDate = dateFormat.format(fromDate.time)
         binding.filterFromDate.setText(todayDate)
@@ -91,8 +120,8 @@ class DashboardFragment : Fragment() {
         binding.filterFromDate.setOnClickListener { showFromDatePicker() }
         binding.filterToDate.setOnClickListener { showToDatePicker() }
 
-        getVisitorType(SharedPreferenceManager.getAuthToken("auth_token"))
-        getVisitPurpose(SharedPreferenceManager.getAuthToken("auth_token"))
+//        getVisitorType(SharedPreferenceManager.getAuthToken("auth_token"))
+//        getVisitPurpose(SharedPreferenceManager.getAuthToken("auth_token"))
 
 //        etVisitPurposeDropdown.setOnClickListener {
 //            showPopupMenu(etVisitPurposeDropdown, options)
@@ -101,34 +130,20 @@ class DashboardFragment : Fragment() {
         binding.searchButton.setOnClickListener({
             val fromDateStr = binding.filterFromDate.text.toString()
             val toDateStr = binding.filterToDate.text.toString()
-            val visitPurpose = selectedVisitPurpose?.VisitPurpose ?: ""
-            val visitorType = selectedVisitorType?.VisitorType ?: ""
-            val name = binding.name.text.toString()
-            val emailId = binding.emailId.text.toString()
-            val phoneNumber = binding.phoneNumber.text.toString()
-            val idNumber = binding.idNumber.text.toString()
+            val query = binding.query.text.toString()
 
             searchVisitors(
                 fromDateStr,
                 toDateStr,
-                visitorType,
-                visitPurpose,
-                name,
-                emailId,
-                phoneNumber,
-                idNumber
+                selectedType,
+                query
             )
         })
 
         binding.resetButton.setOnClickListener {
             binding.filterFromDate.setText(todayDate)
             binding.filterToDate.setText(todayDate)
-            binding.visitorType.setSelection(0)
-            binding.visitPurpose.setSelection(0)
-            binding.name.setText("")
-            binding.emailId.setText("")
-            binding.phoneNumber.setText("")
-            binding.idNumber.setText("")
+            binding.query.setText("")
             callNVisitorListApi(SharedPreferenceManager.getAuthToken("auth_token"))
         }
 
@@ -139,115 +154,126 @@ class DashboardFragment : Fragment() {
 
     }
 
-
-    private fun getVisitPurpose(authToken: String?) {
-        val call = RetrofitInstance.apiService.getVisitorPurpose("Bearer $authToken")
-
-        call.enqueue(object : Callback<List<VisitPurpose>> {
-            override fun onResponse(
-                call: Call<List<VisitPurpose>>, response: Response<List<VisitPurpose>>
-            ) {
-                if (response.isSuccessful) {
-                    println("api call successful ${response.body()}")
-                    val visitPurposeList = response.body()?.toMutableList() ?: mutableListOf()
-
-                    val allOption = VisitPurpose(
-                        IdVisitPurpose = -1,
-                        VisitPurpose = "All",
-                        SortOrder = Int.MIN_VALUE, // Ensures it's always first
-                        IsEditable = false
-                    )
-                    visitPurposeList.add(0, allOption)
-
-                    visitPurposeList.sortedBy { it.SortOrder }
-                    val visitorPurpose = visitPurposeList.map { it.VisitPurpose }
-
-                    val adapter = ArrayAdapter(
-                        context!!, R.layout.spinner_item_layout_filter, visitorPurpose
-                    )
-                    adapter.setDropDownViewResource(R.layout.spinner_item_layout_filter)
-                    binding.visitPurpose.adapter = adapter
-
-                    binding.visitPurpose.onItemSelectedListener =
-                        object : AdapterView.OnItemSelectedListener {
-                            override fun onItemSelected(
-                                parent: AdapterView<*>?, view: View?, position: Int, id: Long
-                            ) {
-                                selectedVisitPurpose = visitPurposeList[position]
-                            }
-
-                            override fun onNothingSelected(parent: AdapterView<*>?) {
-                                selectedVisitPurpose = null
-                            }
-
-                        }
-
-                } else {
-                    println("Response Error: ${response.code()} - ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<List<VisitPurpose>>, t: Throwable) {
-                println("onFailure Error: ${t.message}")
-            }
-
-        })
-
+    fun getSelectedOption(position: Int): String {
+        return when (position) {
+            0 -> "name"
+            1 -> "id"
+            2 -> "contact"
+            3 -> "visitortype"
+            4 -> "visitpurpose"
+            else -> "Invalid Selection"
+        }
     }
 
-    private fun getVisitorType(authToken: String?) {
-        val call = RetrofitInstance.apiService.getVisitorType("Bearer $authToken")
 
-        call.enqueue(object : Callback<List<VisitorType>> {
-            override fun onResponse(
-                call: Call<List<VisitorType>>, response: Response<List<VisitorType>>
-            ) {
-                if (response.isSuccessful) {
-                    println("api call successful ${response.body()}")
-                    val visitorTypeList = response.body()?.toMutableList() ?: mutableListOf()
-                    val allOption = VisitorType(
-                        IdVisitorType = -1,
-                        VisitorType = "All",
-                        SortOrder = Int.MIN_VALUE, // Ensures it's always first
-                        IsEditable = false
-                    )
-                    visitorTypeList.add(0, allOption)
-
-                    visitorTypeList.sortedBy { it.SortOrder }
-                    val visitorTypes = visitorTypeList.map { it.VisitorType }
-
-                    val adapter = ArrayAdapter(
-                        context!!, R.layout.spinner_item_layout_filter, visitorTypes
-                    )
-                    adapter.setDropDownViewResource(R.layout.spinner_item_layout_filter)
-                    binding.visitorType.adapter = adapter
-
-                    binding.visitorType.onItemSelectedListener =
-                        object : AdapterView.OnItemSelectedListener {
-                            override fun onItemSelected(
-                                parent: AdapterView<*>?, view: View?, position: Int, id: Long
-                            ) {
-                                selectedVisitorType = visitorTypeList[position]
-                            }
-
-                            override fun onNothingSelected(parent: AdapterView<*>?) {
-                                selectedVisitorType = null
-                            }
-
-                        }
-
-                } else {
-                    println("Response Error: ${response.code()} - ${response.message()}")
-                }
-            }
-
-            override fun onFailure(call: Call<List<VisitorType>>, t: Throwable) {
-                println("onFailure Error: ${t.message}")
-            }
-
-        })
-
-    }
+//    private fun getVisitPurpose(authToken: String?) {
+//        val call = RetrofitInstance.apiService.getVisitorPurpose("Bearer $authToken")
+//
+//        call.enqueue(object : Callback<List<VisitPurpose>> {
+//            override fun onResponse(
+//                call: Call<List<VisitPurpose>>, response: Response<List<VisitPurpose>>
+//            ) {
+//                if (response.isSuccessful) {
+//                    println("api call successful ${response.body()}")
+//                    val visitPurposeList = response.body()?.toMutableList() ?: mutableListOf()
+//
+//                    val allOption = VisitPurpose(
+//                        IdVisitPurpose = -1,
+//                        VisitPurpose = "All",
+//                        SortOrder = Int.MIN_VALUE, // Ensures it's always first
+//                        IsEditable = false
+//                    )
+//                    visitPurposeList.add(0, allOption)
+//
+//                    visitPurposeList.sortedBy { it.SortOrder }
+//                    val visitorPurpose = visitPurposeList.map { it.VisitPurpose }
+//
+//                    val adapter = ArrayAdapter(
+//                        context!!, R.layout.spinner_item_layout_filter, visitorPurpose
+//                    )
+//                    adapter.setDropDownViewResource(R.layout.spinner_item_layout_filter)
+//                    binding.visitPurpose.adapter = adapter
+//
+//                    binding.visitPurpose.onItemSelectedListener =
+//                        object : AdapterView.OnItemSelectedListener {
+//                            override fun onItemSelected(
+//                                parent: AdapterView<*>?, view: View?, position: Int, id: Long
+//                            ) {
+//                                selectedVisitPurpose = visitPurposeList[position]
+//                            }
+//
+//                            override fun onNothingSelected(parent: AdapterView<*>?) {
+//                                selectedVisitPurpose = null
+//                            }
+//
+//                        }
+//
+//                } else {
+//                    println("Response Error: ${response.code()} - ${response.message()}")
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<VisitPurpose>>, t: Throwable) {
+//                println("onFailure Error: ${t.message}")
+//            }
+//
+//        })
+//
+//    }
+//
+//    private fun getVisitorType(authToken: String?) {
+//        val call = RetrofitInstance.apiService.getVisitorType("Bearer $authToken")
+//
+//        call.enqueue(object : Callback<List<VisitorType>> {
+//            override fun onResponse(
+//                call: Call<List<VisitorType>>, response: Response<List<VisitorType>>
+//            ) {
+//                if (response.isSuccessful) {
+//                    println("api call successful ${response.body()}")
+//                    val visitorTypeList = response.body()?.toMutableList() ?: mutableListOf()
+//                    val allOption = VisitorType(
+//                        IdVisitorType = -1,
+//                        VisitorType = "All",
+//                        SortOrder = Int.MIN_VALUE, // Ensures it's always first
+//                        IsEditable = false
+//                    )
+//                    visitorTypeList.add(0, allOption)
+//
+//                    visitorTypeList.sortedBy { it.SortOrder }
+//                    val visitorTypes = visitorTypeList.map { it.VisitorType }
+//
+//                    val adapter = ArrayAdapter(
+//                        context!!, R.layout.spinner_item_layout_filter, visitorTypes
+//                    )
+//                    adapter.setDropDownViewResource(R.layout.spinner_item_layout_filter)
+//                    binding.visitorType.adapter = adapter
+//
+//                    binding.visitorType.onItemSelectedListener =
+//                        object : AdapterView.OnItemSelectedListener {
+//                            override fun onItemSelected(
+//                                parent: AdapterView<*>?, view: View?, position: Int, id: Long
+//                            ) {
+//                                selectedVisitorType = visitorTypeList[position]
+//                            }
+//
+//                            override fun onNothingSelected(parent: AdapterView<*>?) {
+//                                selectedVisitorType = null
+//                            }
+//
+//                        }
+//
+//                } else {
+//                    println("Response Error: ${response.code()} - ${response.message()}")
+//                }
+//            }
+//
+//            override fun onFailure(call: Call<List<VisitorType>>, t: Throwable) {
+//                println("onFailure Error: ${t.message}")
+//            }
+//
+//        })
+//
+//    }
 
     private fun showPopupMenu(anchor: EditText, options: List<String>) {
         val popupMenu = PopupMenu(context, anchor)
@@ -264,32 +290,18 @@ class DashboardFragment : Fragment() {
     private fun searchVisitors(
         fromDate: String,
         toDate: String,
-        visitorType: String,
-        visitorPurpose: String,
-        name: String,
-        emailId: String,
-        phoneNumber: String,
-        idNumber: String
+        selectedType: String,
+        query: String
+
     ) {
         binding.progressBar.visibility = View.VISIBLE
         val authToken = SharedPreferenceManager.getAuthToken("auth_token")
         val filterApiRequestBody = FilterApiRequestBody(
-            FromDate = "",
-            ToDate = "",
-            VisitPurpose = if (visitorPurpose == "All") {
-                ""
-            } else {
-                visitorPurpose
-            },
-            VisitorType = if (visitorType == "All") {
-                ""
-            } else {
-                visitorType
-            },
-            Email = emailId,
-            Phone = phoneNumber,
-            Name = name,
-            IdNumber = idNumber
+            From = fromDate,
+            To = toDate,
+            FilterFeild = selectedType,
+            DataToSearch = query
+
         )
 
         val call =
@@ -297,11 +309,20 @@ class DashboardFragment : Fragment() {
 
         call.enqueue(object : Callback<List<Visitor>> {
             override fun onResponse(call: Call<List<Visitor>>, response: Response<List<Visitor>>) {
-                if (response.isSuccessful && response.body() != null) {
-                    visitorAdapter.updateList(response.body()!!)
-                    binding.progressBar.visibility = View.GONE
+                if (response.isSuccessful) {
+                    println("api call successful ${response.body()}")
+                    val visitorList = response.body() ?: emptyList()
+                    if (visitorList.isNotEmpty()) {
+                        visitorAdapter.updateList(response.body()!!)
+                        binding.progressBar.visibility = View.GONE
+                    } else {
+                        Toast.makeText(requireContext(), "No results found", Toast.LENGTH_SHORT)
+                            .show()
+                        binding.progressBar.visibility = View.GONE
+                    }
                 } else {
-                    Toast.makeText(requireContext(), "No results found", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Api call Not Success", Toast.LENGTH_SHORT)
+                        .show()
                     binding.progressBar.visibility = View.GONE
                 }
             }
@@ -331,10 +352,14 @@ class DashboardFragment : Fragment() {
                         onCallDetailView = { visitor: Visitor ->
                             callDetailView(visitor)
                         })
-                    val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
-                    binding.visitorRecyclerView.addItemDecoration(divider)
-                    binding.visitorRecyclerView.adapter = visitorAdapter
-                    binding.progressBar.visibility = View.GONE
+                    try {
+                        val divider = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+                        binding.visitorRecyclerView.addItemDecoration(divider)
+                        binding.visitorRecyclerView.adapter = visitorAdapter
+                        binding.progressBar.visibility = View.GONE
+                    } catch (e: Exception) {
+                        Log.e("Dashboard", "exception ${e.message}")
+                    }
                 } else {
                     binding.progressBar.visibility = View.GONE
                     Toast.makeText(context, "Something went wrong....", Toast.LENGTH_SHORT).show()
@@ -354,6 +379,39 @@ class DashboardFragment : Fragment() {
 
         })
 
+
+    }
+
+    private fun callVisitorStatistics(authToken: String?) {
+        val call = RetrofitInstance.apiService.getVisitorStatistics("Bearer $authToken")
+
+        call.enqueue(object : Callback<VisitorStatistics> {
+            @SuppressLint("SetTextI18n")
+            override fun onResponse(
+                call: Call<VisitorStatistics>,
+                response: Response<VisitorStatistics>
+            ) {
+                if (response.isSuccessful) {
+                    println("api call successful ${response.body()}")
+                    val visitorStatistics = response.body()
+
+                    binding.totalVisitors.text =
+                        "Total Visitors: ${visitorStatistics?.total_vistors}"
+                    binding.totalActiveVisitors.text =
+                        "Total Active Visitors: ${visitorStatistics?.total_active_visitors}"
+                    binding.checkOutVisitors.text =
+                        "Checkout Visitors: ${visitorStatistics?.total_checkout_visitors}"
+
+                } else {
+                    println("Response Error: ${response.code()} - ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<VisitorStatistics>, t: Throwable) {
+                println("onFailure Error: ${t.message}")
+            }
+
+        })
 
     }
 

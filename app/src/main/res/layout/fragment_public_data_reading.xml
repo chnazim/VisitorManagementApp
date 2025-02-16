@@ -1,57 +1,62 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
-
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:text="Please TAP and HOLD EID to read the public data"
-        android:textColor="@color/colorReadPublicDataAccent"
-        android:textSize="20dp"
-        android:typeface="monospace" />
-
-    <Button
-        android:id="@+id/btn_refresh"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="8dp"
-        android:background="@drawable/normal_button_bg"
-        android:text="Read Data"
-        android:textColor="@color/colorReadPublicDataAccent"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:visibility="gone" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="150dp"
-        android:layout_height="125dp"
-        android:layout_gravity="center"
-        android:contentDescription="Photo Read from card."
-        android:src="@drawable/ic_action_name"
-        android:visibility="gone" />
-
-
-    <com.bennellin.app.visitormanagementapp.tab.widget.LogTextView
-        android:id="@+id/txtReadData"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="left"
-        android:maxLines="100"
-        android:padding="10dp"
-        android:paddingLeft="16dp"
-        android:scrollbars="vertical"
-        android:text=""
-        android:textSize="14sp"
-        android:typeface="monospace"
-        android:visibility="invisible" />
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="Please TAP and HOLD EID to read data"
+            android:textColor="@color/colorReadPublicDataAccent"
+            android:textSize="20dp"
+            android:typeface="monospace" />
+
+        <Button
+            android:id="@+id/btn_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="8dp"
+            android:background="@drawable/normal_button_bg"
+            android:text="Read Data"
+            android:textColor="@color/colorReadPublicDataAccent"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="150dp"
+            android:layout_height="125dp"
+            android:layout_gravity="center"
+            android:contentDescription="Photo Read from card."
+            android:src="@drawable/ic_action_name"
+            android:visibility="gone" />
 
 
-</LinearLayout>
+        <com.bennellin.app.visitormanagementapp.tab.widget.LogTextView
+            android:id="@+id/txtReadData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="left"
+            android:maxLines="100"
+            android:padding="10dp"
+            android:paddingLeft="16dp"
+            android:scrollbars="vertical"
+            android:text=""
+            android:textSize="14sp"
+            android:typeface="monospace"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+</RelativeLayout>

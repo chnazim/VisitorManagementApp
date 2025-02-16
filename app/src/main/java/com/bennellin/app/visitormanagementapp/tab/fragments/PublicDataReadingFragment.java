@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bennellin.app.visitormanagementapp.Logger.Logger;
@@ -63,6 +64,9 @@ public class PublicDataReadingFragment extends BaseFragment implements View.OnCl
     private LogTextView txtStatus;
     private Button btnResfersh;
     private ImageView imgPhtoto;
+    private TextView textView;
+
+    private String source;
 
 
     public PublicDataReadingFragment() {
@@ -83,33 +87,40 @@ public class PublicDataReadingFragment extends BaseFragment implements View.OnCl
 
     public void setNfcMode(Tag tag) {
         this.tag = tag;
-        isNFCMode = true;
+        isNFCMode = tag != null;
         Logger.e("setNfcMode :: called");
 
-        if (!MyApp.Companion.isReading()) {
-            Logger.d("onResume :: enableForegroundDispatch called");
-            txtStatus.setText("");
-            //set the reading flag..
-            MyApp.Companion.setReading(true);
+        if (isNFCMode) {
+            if (!MyApp.Companion.isReading()) {
+                Logger.d("onResume :: enableForegroundDispatch called");
 
-            //show the dialog to provide user interaction...
-            showProgressDialog("Reading");
+                txtStatus.setText("");
 
-            //create the object of ReaderCardDataAsync
-            if (tag == null) {
-                Logger.e("setNfcMode :: tag is null");
-                return;
-            } else {
-                Logger.e("setNfcMode :: calling read public data");
-                readerTask = new ReaderCardDataAsync(readerCardDataListener, tag);
-            }
-            readerTask.execute();
-        }//
+                //set the reading flag..
+                MyApp.Companion.setReading(true);
+
+                //show the dialog to provide user interaction...
+                showProgressDialog("Reading");
+
+                //create the object of ReaderCardDataAsync
+                if (tag == null) {
+                    Logger.e("setNfcMode :: tag is null");
+                    readerTask = new ReaderCardDataAsync(readerCardDataListener);
+                } else {
+                    Logger.e("setNfcMode :: calling read public data");
+                    readerTask = new ReaderCardDataAsync(readerCardDataListener, tag);
+                }
+                readerTask.execute();
+            }//
+        }
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            source = getArguments().getString("source");
+        }
     }
 
     @Override
@@ -119,11 +130,20 @@ public class PublicDataReadingFragment extends BaseFragment implements View.OnCl
         View view = inflater.inflate(R.layout.fragment_public_data_reading, container, false);
         txtStatus = (LogTextView) view.findViewById(R.id.txtReadData);
         imgPhtoto = (ImageView) view.findViewById(R.id.imageView);
+        textView = (TextView) view.findViewById(R.id.textView);
         // make the text view scrollable.
         txtStatus.setMovementMethod(new ScrollingMovementMethod());
         btnResfersh = (Button) view.findViewById(R.id.btn_refresh);
         btnResfersh.setVisibility(!(isNFCMode) ? View.VISIBLE : View.INVISIBLE);
         btnResfersh.setOnClickListener(this);
+
+        if (source == "NFC") {
+            btnResfersh.setVisibility(View.GONE);
+            textView.setText("Please TAP and HOLD EID to read data");
+        } else if (source == "OTG") {
+            btnResfersh.setVisibility(View.VISIBLE);
+            textView.setText("Please insert EID to reader and press READ button");
+        }
 
         return view;
     }
@@ -213,7 +233,8 @@ public class PublicDataReadingFragment extends BaseFragment implements View.OnCl
                 CardReaderConnectionTask cardReaderConnectionTask =
                         new CardReaderConnectionTask(connectToolkitListener, false);
                 cardReaderConnectionTask.execute();
-            }//if()
+            }
+
         }//onCardReadComplete
 
     };//readerCardDataListener;

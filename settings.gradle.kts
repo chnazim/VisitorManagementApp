@@ -24,5 +24,6 @@ include(":app")
 include(":app", ":EIDAToolkit")
 include(":app", ":xmlsec2-release")
 include(":app", ":nfcreader-plugin-release")
-include(":app",":acssmc-1.1.6.aar")
+include(":app", ":acs-plugin-release")
+
  

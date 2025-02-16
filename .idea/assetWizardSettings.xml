@@ -301,7 +301,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/usb/baseline_usb_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/download/baseline_download_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -312,7 +312,7 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="fdf9f9" />
-                            <entry key="outputName" value="baseline_usb_24" />
+                            <entry key="outputName" value="ic_download" />
                           </map>
                         </option>
                       </PersistentState>

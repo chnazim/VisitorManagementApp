@@ -39,8 +39,7 @@ public class CardReaderConnectionTask extends AsyncTask<Void, Integer, Integer> 
                 if (tag == null) {
                     cardReader = ConnectionController.initConnection();
                     Logger.d("--------->2");
-                }//
-                else {
+                } else {
                     Logger.d("--------->3");
                     cardReader = ConnectionController.initConnection(tag);
 
@@ -49,8 +48,7 @@ public class CardReaderConnectionTask extends AsyncTask<Void, Integer, Integer> 
                 if (cardReader != null && cardReader.isConnected()) {
                     Logger.d("doInBackground() connect successful ");
                     return 0;
-                }//if()
-                else {
+                } else {
                     message = "Connection failed . Couldn't fetch reader handle";
                     return 1;
                 }//else
@@ -60,7 +58,7 @@ public class CardReaderConnectionTask extends AsyncTask<Void, Integer, Integer> 
                 Logger.e("CardReaderConnectionTask():::" + e.getMessage());
                 return 1;
             }//
-        }//if()
+        }
         ConnectionController.closeConnection();
         return 0;
     }//doInBackground()

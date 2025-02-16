@@ -5,6 +5,7 @@ import com.bennellin.app.visitormanagementapp.tab.network.models.CheckInApiReque
 import com.bennellin.app.visitormanagementapp.tab.network.models.FilterApiRequestBody
 import com.bennellin.app.visitormanagementapp.tab.network.models.VisitPurpose
 import com.bennellin.app.visitormanagementapp.tab.network.models.Visitor
+import com.bennellin.app.visitormanagementapp.tab.network.models.VisitorStatistics
 import com.bennellin.app.visitormanagementapp.tab.network.models.VisitorType
 import retrofit2.Call
 import retrofit2.http.Body
@@ -58,9 +59,14 @@ interface ApiService {
         @Query("IdRegisteredPerson") visitorId: String
     ): Call<List<Visitor>>
 
-    @POST("/api/Values/SearchVisitorHistory")
+    @POST("/api/Values/SearchVisitorsForDashboard")
     fun filteredVisitors(
         @Header("Authorization") authToken: String,
         @Body requestBody: FilterApiRequestBody
     ): Call<List<Visitor>>
+
+    @GET("/api/Values/GetStatisticsForDashboard?")
+    fun getVisitorStatistics(
+        @Header("Authorization") authToken: String
+    ): Call<VisitorStatistics>
 }

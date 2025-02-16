@@ -300,8 +300,8 @@ class HomeActivityTab : AppCompatActivity() {
 
     private fun performAction() {
         // Implement specific action logic (e.g., show notifications, download, etc.)
-
-        Toast.makeText(this, "Scan EID Activity ", Toast.LENGTH_SHORT).show()
+//
+//        Toast.makeText(this, "Scan EID Activity ", Toast.LENGTH_SHORT).show()
 
         val intent = Intent(this@HomeActivityTab, EidScanActivityNew::class.java)
         intent.putExtra("TYPE", 5)
@@ -313,7 +313,15 @@ class HomeActivityTab : AppCompatActivity() {
         if (drawerLayout.isDrawerOpen(sideDrawer)) {
             drawerLayout.closeDrawer(sideDrawer)
         } else {
-            super.onBackPressed()
+            AlertDialog.Builder(this)
+                .setTitle("Exit App")
+                .setMessage("Are you sure you want to exit?")
+                .setPositiveButton("Yes") { _, _ ->
+                    super.onBackPressed() // Exit the app
+                }
+                .setNegativeButton("No", null) // Do nothing if "No" is clicked
+                .show()
         }
     }
 }
+

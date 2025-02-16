@@ -11,7 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/EIDAToolkit" />
-            <option value="$PROJECT_DIR$/acssmc-1.1.6.aar" />
+            <option value="$PROJECT_DIR$/acs-plugin-release" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/nfcreader-plugin-release" />
             <option value="$PROJECT_DIR$/xmlsec2-release" />

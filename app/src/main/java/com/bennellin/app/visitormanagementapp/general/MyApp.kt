@@ -28,7 +28,7 @@ class MyApp : Application() {
         VG_URL = url?.trim() ?: ""
         IN_PROCESS = sharedPreferences.getBoolean("IN_PROCESS", true)
         Logger.d("VG_URL__${VG_URL}")
-        path = "${Environment.getExternalStorageDirectory().absolutePath}/EIDAToolkit/"
+        path = "${Environment.getExternalStorageDirectory().absolutePath}/VisitorManagementApp/"
         context = this
 
     }
