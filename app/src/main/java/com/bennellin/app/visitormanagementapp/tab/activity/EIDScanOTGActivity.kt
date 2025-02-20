@@ -283,6 +283,10 @@ class EIDScanOTGActivity : AppCompatActivity() {
                             cardReaderHelper.connectToReader(it)
                             // After permission is granted, call readEmiratesID
 //                            readEmiratesID() // Added this line
+                            val cardReaderConnectionTask =
+                                CardReaderConnectionTask(connectToolkitListener, true)
+                            cardReaderConnectionTask.execute()
+                            loadFragment()
 
                         }
                     } else {

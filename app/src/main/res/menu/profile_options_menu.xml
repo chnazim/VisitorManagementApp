@@ -2,13 +2,21 @@
     <item
         android:id="@+id/menu_profile"
         android:icon="@drawable/baseline_profile_24"
+        android:iconTint="?attr/colorOnPrimary"
         android:title="Profile" />
     <item
         android:id="@+id/menu_settings"
+        android:iconTint="?attr/colorOnPrimary"
         android:icon="@drawable/baseline_settings_24"
         android:title="Settings" />
     <item
+        android:id="@+id/menu_theme"
+        android:iconTint="?attr/colorOnPrimary"
+        android:icon="@drawable/baseline_theme"
+        android:title="Theme" />
+    <item
         android:id="@+id/menu_logout"
+        android:iconTint="?attr/colorOnPrimary"
         android:icon="@drawable/baseline_logout_24"
         android:title="Logout" />
 </menu>

@@ -45,10 +45,10 @@ class DetailViewActivity : AppCompatActivity() {
         visitor = (intent.getSerializableExtra("visitor") as? Visitor)!!
 
         binding.txtName.text = "" + visitor.name
-        binding.txtPhone.text = "Phone:" + visitor.contactNumber
-        binding.txtEmail.text = "Email:" + visitor.Email
-        binding.txtRemark.text = "Description:" + visitor.remark
-        binding.txtCompany.text = "Company Name:" + visitor.companyName
+        binding.txtPhone.text = "Phone: " + visitor.contactNumber
+        binding.txtEmail.text = "Email: " + visitor.Email
+        binding.txtRemark.text = "Description: " + visitor.remark
+        binding.txtCompany.text = "Company Name: " + visitor.companyName
         displayPhoto(visitor.profilePicture)
 
 

@@ -1,5 +1,6 @@
 package com.bennellin.app.visitormanagementapp.tab.activity
 
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
@@ -22,12 +23,23 @@ import com.bennellin.app.visitormanagementapp.tab.network.models.VisitorType
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+import kotlin.math.exp
 
 class ManualEntryActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityManualEntryBinding
     private var selectedVisitorType: VisitorType? = null
     private var selectedVisitPurpose: VisitPurpose? = null
+
+    private var issueDate: Calendar = Calendar.getInstance()
+    private var expiryDate: Calendar = Calendar.getInstance()
+    private var dateOfBirth: Calendar = Calendar.getInstance()
+
+    private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +56,15 @@ class ManualEntryActivity : AppCompatActivity() {
         getVisitorType(SharedPreferenceManager.getAuthToken("auth_token"))
         getVisitPurpose(SharedPreferenceManager.getAuthToken("auth_token"))
 
+        val todayDate = dateFormat.format(dateOfBirth.time)
+        binding.dateOfBirth.setText(todayDate)
+        binding.issueDate.setText(todayDate)
+        binding.expiryDate.setText(todayDate)
+
+        binding.issueDate.setOnClickListener { showIssueDatePicker() }
+        binding.expiryDate.setOnClickListener { showExpiryDatePicker() }
+        binding.dateOfBirth.setOnClickListener { showDobPicker() }
+
         binding.buttonCheckIn.setOnClickListener {
 //            Toast.makeText(this, "call check-in api", Toast.LENGTH_SHORT).show()\
 
@@ -57,6 +78,71 @@ class ManualEntryActivity : AppCompatActivity() {
             onBackPressed()
         })
 
+    }
+
+    private fun showDobPicker() {
+        val year = dateOfBirth.get(Calendar.YEAR)
+        val month = dateOfBirth.get(Calendar.MONTH)
+        val day = dateOfBirth.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog =
+            DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
+                dateOfBirth.set(selectedYear, selectedMonth, selectedDay)
+                val selectedDate = dateFormat.format(dateOfBirth.time)
+                binding.dateOfBirth.setText(selectedDate)
+            }, year, month, day)
+
+
+        datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
+
+        datePickerDialog.show()
+    }
+
+    private fun showIssueDatePicker() {
+        val year = issueDate.get(Calendar.YEAR)
+        val month = issueDate.get(Calendar.MONTH)
+        val day = issueDate.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog =
+            DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
+                issueDate.set(selectedYear, selectedMonth, selectedDay)
+                val selectedDate = dateFormat.format(issueDate.time)
+                binding.issueDate.setText(selectedDate)
+
+                if (expiryDate.before(issueDate)) {
+                    expiryDate.time = expiryDate.time
+                    binding.expiryDate.setText(selectedDate)
+                }
+            }, year, month, day)
+
+        datePickerDialog.show()
+    }
+
+    private fun showExpiryDatePicker() {
+        val year = expiryDate.get(Calendar.YEAR)
+        val month = expiryDate.get(Calendar.MONTH)
+        val day = expiryDate.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog =
+            DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
+                val selectedCalendar = Calendar.getInstance()
+                selectedCalendar.set(selectedYear, selectedMonth, selectedDay)
+
+                // Ensure To Date is after From Date
+                if (selectedCalendar.before(issueDate)) {
+                    binding.expiryDate.error = "To Date cannot be before From Date"
+                    return@DatePickerDialog
+                }
+
+                expiryDate.time = selectedCalendar.time
+                val selectedDate = dateFormat.format(expiryDate.time)
+                binding.expiryDate.setText(selectedDate)
+            }, year, month, day)
+
+        // Restrict To Date to be after or same as From Date
+        datePickerDialog.datePicker.minDate = issueDate.timeInMillis
+
+        datePickerDialog.show()
     }
 
     private fun callCheckInApi(authToken: String?) {

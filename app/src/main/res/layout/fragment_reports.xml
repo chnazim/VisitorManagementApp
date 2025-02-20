@@ -38,7 +38,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="Search Visitor Details"
-                        android:textColor="#FFFFFF"
+                        android:textColor="@color/text_primary"
                         android:textSize="18sp" />
 
                 </LinearLayout>
@@ -73,7 +73,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="2dp"
                                 android:text="Visitors From Date"
-                                android:textColor="#FFFFFF"
+                                android:textColor="@color/text_primary"
                                 android:textSize="14sp" />
 
                             <EditText
@@ -88,7 +88,7 @@
                                 android:lines="1"
                                 android:minHeight="30dp"
                                 android:padding="8dp"
-                                android:textColor="#FFFFFF"
+                                android:textColor="@color/text_primary"
                                 android:textColorHint="#888"
                                 android:textSize="14sp" />
 
@@ -107,7 +107,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="2dp"
                                 android:text="Visitors To Date"
-                                android:textColor="#FFFFFF"
+                                android:textColor="@color/text_primary"
                                 android:textSize="14sp" />
 
                             <EditText
@@ -123,7 +123,7 @@
                                 android:lines="1"
                                 android:minHeight="30dp"
                                 android:padding="8dp"
-                                android:textColor="#FFFFFF"
+                                android:textColor="@color/text_primary"
                                 android:textColorHint="#888"
                                 android:textSize="14sp" />
 
@@ -142,7 +142,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="2dp"
                                 android:text="Field"
-                                android:textColor="#FFFFFF"
+                                android:textColor="@color/text_primary"
                                 android:textSize="14sp" />
 
                             <Spinner
@@ -153,7 +153,7 @@
                                 android:drawablePadding="8dp"
                                 android:minHeight="30dp"
                                 android:padding="4dp"
-                                android:popupBackground="#303040" />
+                                android:popupBackground="@color/popupBackColor" />
 
                         </LinearLayout>
 
@@ -170,7 +170,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="2dp"
                                 android:text="Query"
-                                android:textColor="#FFFFFF"
+                                android:textColor="@color/text_primary"
                                 android:textSize="14sp" />
 
                             <EditText
@@ -180,12 +180,12 @@
                                 android:background="@drawable/rounded_input"
                                 android:drawablePadding="8dp"
                                 android:hint="Query"
-                                android:lines="1"
-                                android:singleLine="true"
                                 android:imeOptions="actionDone"
+                                android:lines="1"
                                 android:minHeight="30dp"
                                 android:padding="8dp"
-                                android:textColor="#FFFFFF"
+                                android:singleLine="true"
+                                android:textColor="@color/text_primary"
                                 android:textColorHint="#888"
                                 android:textSize="14sp" />
 
@@ -432,11 +432,10 @@
                                         android:layout_height="wrap_content"
                                         android:backgroundTint="@color/teal_700"
                                         android:drawableLeft="@drawable/ic_download"
-                                        android:drawablePadding="8dp"
                                         android:minHeight="40dp"
-                                        android:text=" Download"
-                                        android:textSize="14sp"
-                                        android:textColor="@android:color/white" />
+                                        android:text="Download"
+                                        android:textColor="@android:color/white"
+                                        android:textSize="14sp" />
 
                                 </LinearLayout>
 
@@ -860,7 +859,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Entry Time"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textSize="14sp" />
 
                         <TextView
@@ -868,7 +867,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Name"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textSize="14sp" />
 
                         <TextView
@@ -876,7 +875,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Exit Time"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textSize="14sp" />
 
                         <TextView
@@ -884,7 +883,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="ID Number"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textSize="14sp" />
 
                         <TextView
@@ -892,7 +891,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Visit Purpose"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textSize="14sp" />
 
                         <TextView
@@ -900,7 +899,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Remarks"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textSize="14sp" />
 
                         <TextView
@@ -908,7 +907,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Contact Number"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textSize="14sp" />
 
                         <TextView
@@ -916,7 +915,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Company"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textSize="14sp" />
 
                         <TextView
@@ -924,7 +923,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Access Card"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textSize="14sp" />
 
                         <TextView
@@ -932,7 +931,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Registration"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textSize="14sp" />
 
 
@@ -944,7 +943,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="8dp"
-                        android:background="#2E3344"
+                        android:background="@color/background_primary"
                         android:clipToPadding="false"
                         android:padding="16dp"
                         android:scrollbars="vertical" />

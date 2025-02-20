@@ -1,5 +1,6 @@
 package com.bennellin.app.visitormanagementapp.tab.activity
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
@@ -9,10 +10,13 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.PopupMenu
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
@@ -32,13 +36,14 @@ class HomeActivityTab : AppCompatActivity() {
     private lateinit var menuButton: ImageView
     private lateinit var actionButton: ImageView
     private lateinit var toolKitInit: ImageView
-    private lateinit var sideDrawer: LinearLayout
+    private lateinit var sideDrawer: RelativeLayout
     private lateinit var optionDashboard: LinearLayout
     private lateinit var optionReports: LinearLayout
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(ThemePreferences.getTheme(this))
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
         window.decorView.systemUiVisibility =
             (View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_FULLSCREEN or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
@@ -133,12 +138,30 @@ class HomeActivityTab : AppCompatActivity() {
         }
     }
 
+//    private fun setFullScreenMode() {
+//        window.decorView.systemUiVisibility =
+//            (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                    or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+//                    or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+//                    or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//                    or View.SYSTEM_UI_FLAG_FULLSCREEN
+//                    or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+//    }
+
     private fun showAlertForOption(view: View) {
         val popupMenu = PopupMenu(this, view)
 
         // Inflate menu
         val inflater = popupMenu.menuInflater
         inflater.inflate(R.menu.scan_options_menu, popupMenu.menu)
+
+        val iconTint = ContextCompat.getColor(this, R.color.icon_tint)
+        // Apply tint to the icons of each menu item
+        popupMenu.menu?.let {
+            it.findItem(R.id.menu_eid_nfc)?.icon?.setTint(iconTint)
+            it.findItem(R.id.menu_eid_otg)?.icon?.setTint(iconTint)
+            it.findItem(R.id.menu_manual)?.icon?.setTint(iconTint)
+        }
 
         try {
             val fields = popupMenu.javaClass.getDeclaredFields()
@@ -230,6 +253,14 @@ class HomeActivityTab : AppCompatActivity() {
         // Inflate menu
         val inflater = popupMenu.menuInflater
         inflater.inflate(R.menu.profile_options_menu, popupMenu.menu)
+        val iconTint = ContextCompat.getColor(this, R.color.icon_tint)
+        // Apply tint to the icons of each menu item
+        popupMenu.menu?.let {
+            it.findItem(R.id.menu_profile)?.icon?.setTint(iconTint)
+            it.findItem(R.id.menu_settings)?.icon?.setTint(iconTint)
+            it.findItem(R.id.menu_theme)?.icon?.setTint(iconTint)
+            it.findItem(R.id.menu_logout)?.icon?.setTint(iconTint)
+        }
 
         try {
             val fields = popupMenu.javaClass.getDeclaredFields()
@@ -263,6 +294,11 @@ class HomeActivityTab : AppCompatActivity() {
                     true
                 }
 
+                R.id.menu_theme -> {
+                    showThemeSelectionDialog(this)
+                    true
+                }
+
                 R.id.menu_logout -> {
                     callLogoutAlert()
                     true
@@ -274,6 +310,45 @@ class HomeActivityTab : AppCompatActivity() {
 
         // Show the PopupMenu
         popupMenu.show()
+    }
+
+    private fun showThemeSelectionDialog(context: Context) {
+        val themes = arrayOf("Light Mode", "Dark Mode", "System Default")
+
+        // Get the current theme selection
+        val currentTheme = ThemePreferences.getTheme(context)
+        var selectedTheme = currentTheme
+
+        // Map current theme mode to index
+        val checkedItem = when (currentTheme) {
+            AppCompatDelegate.MODE_NIGHT_NO -> 0
+            AppCompatDelegate.MODE_NIGHT_YES -> 1
+            else -> 2 // MODE_NIGHT_FOLLOW_SYSTEM
+        }
+
+        // Build the AlertDialog
+        AlertDialog.Builder(context)
+            .setTitle("Select Theme")
+            .setSingleChoiceItems(themes, checkedItem) { _, which ->
+                selectedTheme = when (which) {
+                    0 -> AppCompatDelegate.MODE_NIGHT_NO
+                    1 -> AppCompatDelegate.MODE_NIGHT_YES
+                    else -> AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+                }
+            }
+            .setPositiveButton("CONFIRM") { _, _ ->
+                // Save the selected theme and apply it
+                ThemePreferences.saveTheme(context, selectedTheme)
+                AppCompatDelegate.setDefaultNightMode(selectedTheme)
+
+                // Restart activity to apply changes
+                val intent = Intent(context, HomeActivityTab::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                context.startActivity(intent)
+                (context as HomeActivityTab).finish()
+            }
+            .setNegativeButton("CANCEL", null)
+            .show()
     }
 
 

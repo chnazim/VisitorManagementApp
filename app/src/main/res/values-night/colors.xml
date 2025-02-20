@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="icon_tint">#FFFFFF</color>
+
+    <color name="background_primary">#2E3344</color>
+    <color name="background_secondary">#3A3F54</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#888888</color>
+    <color name="button_active">#5A5F74</color>
+    <color name="button_pressed">#4C8BF5</color>
+    <color name="whitelist">#28A745</color>
+    <color name="blacklist">#DC3545</color>
+    <!-- Read Public Data -->
+    <color name="colorReadPublicDataBG">#E8F7FF</color> <!-- Light blue background for data read -->
+    <color name="colorReadPublicDataAccent">#004D71</color> <!-- Dark blue accent color -->
+    <color name="roundButtonBackground">#3A3F54</color>
+    <color name="strokeColor">#5A5F74</color>
+    <color name="popupBackColor">#303040</color>
+</resources>

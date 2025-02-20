@@ -52,6 +52,7 @@
             android:name=".tab.activity.EIDScanOTGActivity"
             android:exported="false"
             android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.VisitorManagementApp">
             <intent-filter>
                 <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
@@ -62,71 +63,89 @@
             android:name=".tab.activity.ManualEntryActivity"
             android:exported="false"
             android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.VisitorManagementApp" />
         <activity
             android:name=".tab.activity.DetailViewActivity"
             android:exported="false"
             android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.VisitorManagementApp" />
         <activity
             android:name=".activity.ReadNFCActivity"
             android:exported="false"
             android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustResize"
             android:theme="@style/Theme.VisitorManagementApp" />
         <activity
             android:name=".tab.activity.EidScanActivityNew"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="landscape" />
         <activity
             android:name=".tab.activity.EIDScanActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="landscape" />
         <activity
             android:name=".tab.activity.HomeActivityTab"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="landscape" />
         <activity
             android:name=".tab.activity.DashboardActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="landscape" />
         <activity
             android:name=".tab.activity.LoginActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="landscape" />
         <activity
             android:name=".newFlow.ScanResultActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="landscape" />
         <activity
             android:name=".newFlow.LoginActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="landscape" />
         <activity
             android:name=".newFlow.HomeActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.TokenDisplayActivity"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.DisplayDetail"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.ScanWithMRZ"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".activity.ScanEmiratesIdActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".activity.VisitorDetailActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".activity.GatesListActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".activity.ScanActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
@@ -136,9 +155,11 @@
         </activity>
         <activity
             android:name=".activity.LoginActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
         <activity
             android:name=".activity.LauncherActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -148,6 +169,7 @@
         </activity>
         <activity
             android:name=".activity.MainActivity"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
 
         <provider

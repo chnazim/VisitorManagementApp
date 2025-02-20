@@ -472,7 +472,7 @@ class DashboardFragment : Fragment() {
                     binding.filterFromDate.setText(selectedDate)
 
                     // If To Date is before From Date, reset it
-                    if (fromDate.before(fromDate)) {
+                    if (toDate.before(fromDate)) {
                         toDate.time = fromDate.time
                         binding.filterToDate.setText(selectedDate)
                     }

@@ -13,15 +13,28 @@
     <color name="secondaryDark">#E07297</color>
     <color name="recyclerItemBack">#33AFAF</color>
 
+    <!-- Primary and Secondary Background Colors -->
+    <color name="background_primary">#FFFFFF</color> <!-- White background -->
+    <color name="background_secondary">#F5F5F5</color> <!-- Light gray background -->
 
-    <color name="background_primary">#2E3344</color>
-    <color name="background_secondary">#3A3F54</color>
-    <color name="text_primary">#FFFFFF</color>
-    <color name="text_secondary">#888888</color>
-    <color name="button_active">#5A5F74</color>
-    <color name="button_pressed">#4C8BF5</color>
-    <color name="whitelist">#28A745</color>
-    <color name="blacklist">#DC3545</color>
+    <!-- Text Colors -->
+    <color name="text_primary">#000000</color> <!-- Black text for high contrast -->
+    <color name="text_secondary">#666666</color> <!-- Lighter gray text for secondary content -->
+
+    <!-- Button Colors -->
+    <color name="button_active">#8E8E8E</color> <!-- Gray for active buttons -->
+    <color name="button_pressed">#3D7DFF</color> <!-- Blue for pressed buttons -->
+
+    <!-- Status Colors -->
+    <color name="whitelist">#28A745</color> <!-- Green for whitelist status -->
+    <color name="blacklist">#DC3545</color> <!-- Red for blacklist status -->
+
     <color name="colorReadPublicDataBG">#F5FCFE</color>
     <color name="colorReadPublicDataAccent">#16647E</color>
+    <color name="roundButtonBackground">#D0D3E2</color>
+    <color name="strokeColor">#D3D6E0</color>
+    <color name="popupBackColor">#D3D4E0</color>
+
+
+    <color name="icon_tint">#000000</color>
 </resources>

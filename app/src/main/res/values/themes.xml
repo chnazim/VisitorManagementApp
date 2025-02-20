@@ -12,8 +12,22 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+
+        <!-- Background color -->
+        <item name="backgroundColor">@color/background_primary</item>
+
+        <!-- Text colors -->
+        <item name="textFillColor">@color/text_primary</item> <!-- Light primary text color -->
+        <item name="android:textColorSecondary">@color/text_secondary
+        </item> <!-- Light secondary text color -->
+        <item name="colorSurface">@color/background_secondary</item>
+
+        <!-- Toolbar -->
+        <item name="android:textColorPrimary">@color/text_primary</item>
     </style>
-  <!-- Base application theme. -->
+    <!-- Base application theme. -->
     <style name="Base.Theme.VisitorManagementApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->

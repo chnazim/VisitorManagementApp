@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="John Doe"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -49,28 +49,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Phone: +971-551122334"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/text_primary" />
 
             <TextView
                 android:id="@+id/txtEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email: john.doe@xyzcompany.com"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/text_primary" />
 
             <TextView
                 android:id="@+id/txtRemark"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Email: john.doe@xyzcompany.com"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/text_primary" />
 
             <TextView
                 android:id="@+id/txtCompany"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Company: XYZ Company"
-                android:textColor="@android:color/white"
+                android:textColor="@color/text_primary"
                 android:textStyle="bold" />
         </LinearLayout>
     </RelativeLayout>
@@ -96,6 +96,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:visibility="gone"
             android:id="@+id/btnEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -116,7 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="Visit History"
-        android:textColor="@android:color/white"
+        android:textColor="@color/text_primary"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -140,7 +141,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Entry Time"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp" />
 
             <TextView
@@ -148,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Exit Time"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp" />
 
             <TextView
@@ -156,7 +157,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="ID Type"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp" />
 
             <TextView
@@ -164,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="ID Number"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp" />
 
             <TextView
@@ -172,7 +173,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Visit Purpose"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp" />
 
             <TextView
@@ -180,7 +181,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Remarks"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp" />
 
             <TextView
@@ -188,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Contact Number"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp" />
 
             <TextView
@@ -196,7 +197,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Company"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp" />
 
             <TextView
@@ -204,7 +205,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Access Card"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp" />
 
 
@@ -216,7 +217,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
-            android:background="#2E3344"
+            android:background="@color/background_primary"
             android:clipToPadding="false"
             android:padding="4dp"
             android:scrollbars="vertical" />

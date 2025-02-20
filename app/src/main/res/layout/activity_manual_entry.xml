@@ -5,12 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#1A1A2E"
+    android:background="@color/background_primary"
+    android:fitsSystemWindows="true"
     tools:context=".tab.activity.EIDScanActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="Manual Entry"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/text_primary"
                 android:textSize="20sp" />
 
 
@@ -62,7 +65,7 @@
                             android:layout_height="wrap_content"
                             android:paddingEnd="8dp"
                             android:text="Visitor Type"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <Spinner
                             android:id="@+id/visitor_type"
@@ -72,7 +75,7 @@
                             android:drawablePadding="8dp"
                             android:minHeight="50dp"
                             android:padding="8dp"
-                            android:popupBackground="#303040" />
+                            android:popupBackground="@color/popupBackColor" />
 
                     </LinearLayout>
 
@@ -90,7 +93,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="Full Name English"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <EditText
                             android:id="@+id/full_name_english"
@@ -102,7 +105,7 @@
                             android:hint="Full Name English"
                             android:inputType="text"
                             android:padding="8dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#AAAAAA" />
                     </LinearLayout>
 
@@ -119,7 +122,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="ID Number"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <EditText
                             android:id="@+id/eid_number"
@@ -131,7 +134,7 @@
                             android:hint="Eid Number"
                             android:inputType="text"
                             android:padding="8dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#AAAAAA" />
                     </LinearLayout>
 
@@ -148,7 +151,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="Card Number"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <EditText
                             android:id="@+id/card_number"
@@ -160,7 +163,7 @@
                             android:hint="Card Number"
                             android:inputType="text"
                             android:padding="8dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#AAAAAA" />
                     </LinearLayout>
 
@@ -177,7 +180,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="Mobile Number"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <EditText
                             android:id="@+id/mobile_number"
@@ -189,7 +192,7 @@
                             android:hint="Mobile Number"
                             android:inputType="text"
                             android:padding="8dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#AAAAAA" />
                     </LinearLayout>
 
@@ -206,7 +209,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="Access Card Number"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <EditText
                             android:id="@+id/access_card_number"
@@ -218,6 +221,7 @@
                             android:hint="Access Card Number"
                             android:inputType="text"
                             android:padding="8dp"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#AAAAAA" />
                     </LinearLayout>
 
@@ -246,7 +250,7 @@
                             android:layout_height="wrap_content"
                             android:paddingEnd="8dp"
                             android:text="Visit Purpose"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <Spinner
                             android:id="@+id/visit_purpose"
@@ -256,7 +260,7 @@
                             android:drawablePadding="8dp"
                             android:minHeight="50dp"
                             android:padding="8dp"
-                            android:popupBackground="#303040" />
+                            android:popupBackground="@color/popupBackColor" />
 
                     </LinearLayout>
 
@@ -274,7 +278,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="Full Name Arabic"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <EditText
                             android:id="@+id/full_name_arabic"
@@ -286,7 +290,7 @@
                             android:hint="Full Name Arabic"
                             android:inputType="text"
                             android:padding="8dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#AAAAAA" />
                     </LinearLayout>
 
@@ -303,7 +307,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="Issue Date"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <EditText
                             android:id="@+id/issue_date"
@@ -311,11 +315,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:background="@drawable/rounded_input"
+                            android:clickable="true"
                             android:drawablePadding="8dp"
+                            android:focusable="false"
                             android:hint="2023-12-23"
-                            android:inputType="text"
                             android:padding="8dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#AAAAAA" />
                     </LinearLayout>
 
@@ -332,7 +337,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="Expiry Date"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <EditText
                             android:id="@+id/expiry_date"
@@ -340,11 +345,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:background="@drawable/rounded_input"
+                            android:clickable="true"
                             android:drawablePadding="8dp"
+                            android:focusable="false"
                             android:hint="2025-12-22"
-                            android:inputType="text"
                             android:padding="8dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#AAAAAA" />
                     </LinearLayout>
 
@@ -361,7 +367,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="Email ID"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <EditText
                             android:id="@+id/email_id"
@@ -373,7 +379,7 @@
                             android:hint="Email ID"
                             android:inputType="text"
                             android:padding="8dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#AAAAAA" />
                     </LinearLayout>
 
@@ -390,7 +396,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="Remarks"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <EditText
                             android:id="@+id/remarks"
@@ -402,7 +408,7 @@
                             android:hint="Remark"
                             android:inputType="text"
                             android:padding="8dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#AAAAAA" />
                     </LinearLayout>
 
@@ -421,11 +427,11 @@
                     <!-- Profile Pic -->
 
                     <LinearLayout
-                        android:visibility="invisible"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:visibility="invisible">
 
                         <ImageView
                             android:id="@+id/profileImageView"
@@ -452,7 +458,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="Nationality"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <EditText
                             android:id="@+id/nationality"
@@ -464,7 +470,7 @@
                             android:hint="Nationality"
                             android:inputType="text"
                             android:padding="8dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#AAAAAA" />
                     </LinearLayout>
 
@@ -481,7 +487,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="Date of Birth"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <EditText
                             android:id="@+id/date_of_birth"
@@ -489,11 +495,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:background="@drawable/rounded_input"
+                            android:clickable="true"
                             android:drawablePadding="8dp"
+                            android:focusable="false"
                             android:hint="2023-12-23"
-                            android:inputType="text"
                             android:padding="8dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#AAAAAA" />
                     </LinearLayout>
 
@@ -510,7 +517,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="4dp"
                             android:text="Company Name"
-                            android:textColor="#FFFFFF" />
+                            android:textColor="@color/text_primary" />
 
                         <EditText
                             android:id="@+id/company_name"
@@ -522,7 +529,7 @@
                             android:hint="Company Name"
                             android:inputType="text"
                             android:padding="8dp"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/text_primary"
                             android:textColorHint="#AAAAAA" />
                     </LinearLayout>
 
